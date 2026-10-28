@@ -1,0 +1,3 @@
+# Chart Releaser config file (default is $HOME/.cr.yaml).
+owner: dsohqlab
+git-base-url: https://api.github.com/
