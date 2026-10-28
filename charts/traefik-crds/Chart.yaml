@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=https://json.schemastore.org/chart.json
+apiVersion: v2
+name: traefik-crds
+description: >-
+  A Helm chart to install the CustomResourceDefinitions for Traefik Proxy
+  (IngressRoutes, Middlewares, TLS options, transports)
+type: application
+version: 3.7.16
+appVersion: 3.7.16
+kubeVersion: ">=1.25.0-0"
+home: https://traefik.io
+icon: >-
+  https://raw.githubusercontent.com/traefik/traefik/master/docs/content/assets/img/traefikproxy-icon-color.png
+sources:
+- https://github.com/dsohqlab/helm-charts
+- https://github.com/traefik/traefik
+keywords:
+- crds
+- traefik
+maintainers:
+- name: dsohqlab
+  url: https://github.com/dsohqlab
+annotations:
+  artifacthub.io/license: MIT
+  artifacthub.io/crds: |
+    - kind: IngressRoute
+      version: v1alpha1
+      name: ingressroutes.traefik.io
+      displayName: IngressRoute
+      description: IngressRoute is the CRD implementation of a Traefik HTTP Router.
+    - kind: IngressRouteTCP
+      version: v1alpha1
+      name: ingressroutetcps.traefik.io
+      displayName: IngressRouteTCP
+      description: IngressRouteTCP is the CRD implementation of a Traefik TCP Router.
+    - kind: IngressRouteUDP
+      version: v1alpha1
+      name: ingressrouteudps.traefik.io
+      displayName: IngressRouteUDP
+      description: IngressRouteUDP is a CRD implementation of a Traefik UDP Router.
+    - kind: Middleware
+      version: v1alpha1
+      name: middlewares.traefik.io
+      displayName: Middleware
+      description: Middleware is the CRD implementation of a Traefik Middleware
+    - kind: MiddlewareTCP
+      version: v1alpha1
+      name: middlewaretcps.traefik.io
+      displayName: MiddlewareTCP
+      description: MiddlewareTCP is the CRD implementation of a Traefik TCP middleware
+    - kind: ServersTransport
+      version: v1alpha1
+      name: serverstransports.traefik.io
+      displayName: ServersTransport
+      description: ServersTransport is the CRD implementation of a ServersTransport
+    - kind: ServersTransportTCP
+      version: v1alpha1
+      name: serverstransporttcps.traefik.io
+      displayName: ServersTransportTCP
+      description: ServersTransportTCP is the CRD implementation of a TCPServersTransport
+    - kind: TLSOption
+      version: v1alpha1
+      name: tlsoptions.traefik.io
+      displayName: TLSOption
+      description: >-
+        TLSOption is the CRD implementation of a Traefik TLS Option, allowing to
+        configure some parameters of the TLS connection
+    - kind: TLSStore
+      version: v1alpha1
+      name: tlsstores.traefik.io
+      displayName: TLSStore
+      description: TLSStore is the CRD implementation of a Traefik TLS Store
+    - kind: TraefikService
+      version: v1alpha1
+      name: traefikservices.traefik.io
+      displayName: TraefikService
+      description: TraefikService is the CRD implementation of a Traefik Service
+  artifacthub.io/links: |
+    - name: Upstream project
+      url: https://traefik.io
+    - name: Upstream repository
+      url: https://github.com/traefik/traefik
+    - name: >-
+        Upstream CRD source
+        (docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml)
+      url: >-
+        https://github.com/traefik/traefik/tree/v3.7.16/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+    - name: Chart source
+      url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/traefik-crds
+    - name: Verify signature and attestations
+      url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+  helm.dsohqlab.com/upstream-repo: https://github.com/traefik/traefik
+  helm.dsohqlab.com/upstream-tag: v3.7.16
+  helm.dsohqlab.com/upstream-commit: af6d927c51191ae1df104aaf907793386b816c28
+  artifacthub.io/changes: |
+    - Initial release, CRDs from upstream v3.7.16

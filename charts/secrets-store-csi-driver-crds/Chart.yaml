@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://json.schemastore.org/chart.json
+apiVersion: v2
+name: secrets-store-csi-driver-crds
+description: >-
+  A Helm chart to install the CustomResourceDefinitions for Secrets Store CSI
+  driver for Kubernetes secrets
+type: application
+version: 1.6.1
+appVersion: 1.6.1
+kubeVersion: ">=1.16.0-0"
+home: https://secrets-store-csi-driver.sigs.k8s.io
+icon: https://github.com/kubernetes/kubernetes/blob/master/logo/logo.png
+sources:
+- https://github.com/dsohqlab/helm-charts
+- https://github.com/kubernetes-sigs/secrets-store-csi-driver
+keywords:
+- crds
+- secrets-store-csi-driver
+maintainers:
+- name: dsohqlab
+  url: https://github.com/dsohqlab
+annotations:
+  artifacthub.io/license: Apache-2.0
+  artifacthub.io/crds: |
+    - kind: SecretProviderClass
+      version: v1
+      name: secretproviderclasses.secrets-store.csi.x-k8s.io
+      displayName: SecretProviderClass
+      description: SecretProviderClass is the Schema for the secretproviderclasses API
+    - kind: SecretProviderClassPodStatus
+      version: v1
+      name: secretproviderclasspodstatuses.secrets-store.csi.x-k8s.io
+      displayName: SecretProviderClassPodStatus
+      description: >-
+        SecretProviderClassPodStatus is the Schema for the
+        secretproviderclassespodstatus API
+  artifacthub.io/links: |
+    - name: Upstream project
+      url: https://secrets-store-csi-driver.sigs.k8s.io
+    - name: Upstream repository
+      url: https://github.com/kubernetes-sigs/secrets-store-csi-driver
+    - name: Upstream CRD source (config/crd/bases)
+      url: >-
+        https://github.com/kubernetes-sigs/secrets-store-csi-driver/tree/v1.6.1/config/crd/bases
+    - name: Chart source
+      url: >-
+        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/secrets-store-csi-driver-crds
+    - name: Verify signature and attestations
+      url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+  helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/secrets-store-csi-driver
+  helm.dsohqlab.com/upstream-tag: v1.6.1
+  helm.dsohqlab.com/upstream-commit: 0e4ceeb734246e1de5267d8968023a3c8dcff39a
+  artifacthub.io/changes: |
+    - Initial release, CRDs from upstream v1.6.1

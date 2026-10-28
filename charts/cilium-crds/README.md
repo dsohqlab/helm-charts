@@ -1,0 +1,96 @@
+# cilium-crds
+
+A Helm chart to install the CustomResourceDefinitions for Cilium (cilium.io v2 and v2alpha1).
+
+CRDs are copied verbatim from [cilium/cilium](https://github.com/cilium/cilium)
+at tag [`v1.20.4`](https://github.com/cilium/cilium/tree/v1.20.4) (commit `beb276d2f38d4aadfda14710acf8d14a0f1ba723`),
+path(s) `pkg/k8s/apis/cilium.io/client/crds`, and rendered as regular Helm templates so that
+`helm upgrade` updates them (Helm's own `crds/` directory never upgrades).
+
+## Install
+
+```sh
+helm install cilium oci://ghcr.io/dsohqlab/helm-charts/cilium-crds --version <version>
+```
+
+Chart `version` equals the upstream version it ships; `appVersion` is always the exact upstream version.
+Installing requires Kubernetes >=1.25.0.
+
+### Already have these CRDs?
+
+If the CRDs were installed by the operator chart or `kubectl apply`, Helm refuses with
+"rendered manifests contain a resource that already exists". Either let Helm adopt them:
+
+```sh
+helm install cilium oci://ghcr.io/dsohqlab/helm-charts/cilium-crds --version <version> --take-ownership   # Helm >= 3.17
+```
+
+or, on older Helm, hand them over first (replace `<release>` and `<namespace>`):
+
+```sh
+kubectl annotate crd ciliumbgpadvertisements.cilium.io ciliumbgpclusterconfigs.cilium.io ciliumbgpnodeconfigoverrides.cilium.io ciliumbgpnodeconfigs.cilium.io ciliumbgppeerconfigs.cilium.io ciliumcidrgroups.cilium.io ciliumclusterwideenvoyconfigs.cilium.io ciliumclusterwidenetworkpolicies.cilium.io ciliumdatapathplugins.cilium.io ciliumegressgatewaypolicies.cilium.io ciliumendpoints.cilium.io ciliumendpointslices.cilium.io ciliumenvoyconfigs.cilium.io ciliumgatewayclassconfigs.cilium.io ciliumidentities.cilium.io ciliuml2announcementpolicies.cilium.io ciliumloadbalancerippools.cilium.io ciliumlocalredirectpolicies.cilium.io ciliumnetworkpolicies.cilium.io ciliumnodeconfigs.cilium.io ciliumnodes.cilium.io ciliumpodippools.cilium.io \
+  meta.helm.sh/release-name=<release> meta.helm.sh/release-namespace=<namespace> --overwrite
+kubectl label crd ciliumbgpadvertisements.cilium.io ciliumbgpclusterconfigs.cilium.io ciliumbgpnodeconfigoverrides.cilium.io ciliumbgpnodeconfigs.cilium.io ciliumbgppeerconfigs.cilium.io ciliumcidrgroups.cilium.io ciliumclusterwideenvoyconfigs.cilium.io ciliumclusterwidenetworkpolicies.cilium.io ciliumdatapathplugins.cilium.io ciliumegressgatewaypolicies.cilium.io ciliumendpoints.cilium.io ciliumendpointslices.cilium.io ciliumenvoyconfigs.cilium.io ciliumgatewayclassconfigs.cilium.io ciliumidentities.cilium.io ciliuml2announcementpolicies.cilium.io ciliumloadbalancerippools.cilium.io ciliumlocalredirectpolicies.cilium.io ciliumnetworkpolicies.cilium.io ciliumnodeconfigs.cilium.io ciliumnodes.cilium.io ciliumpodippools.cilium.io \
+  app.kubernetes.io/managed-by=Helm --overwrite
+```
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `annotations` | object | `{}` | Extra annotations added to every CRD. |
+| `labels` | object | `{}` | Extra labels added to every CRD. |
+| `keepOnUninstall` | bool | `true` | Add `helm.sh/resource-policy: keep` so CRDs (and all their custom resources) survive `helm uninstall`. |
+
+Unknown keys are rejected (`values.schema.json`).
+
+## CRDs
+
+| CRD | Kind | Group | Scope | Versions |
+|-----|------|-------|-------|----------|
+| `ciliumbgpadvertisements.cilium.io` | CiliumBGPAdvertisement | cilium.io | Cluster | **v2**, v2alpha1 |
+| `ciliumbgpclusterconfigs.cilium.io` | CiliumBGPClusterConfig | cilium.io | Cluster | **v2**, v2alpha1 |
+| `ciliumbgpnodeconfigoverrides.cilium.io` | CiliumBGPNodeConfigOverride | cilium.io | Cluster | **v2**, v2alpha1 |
+| `ciliumbgpnodeconfigs.cilium.io` | CiliumBGPNodeConfig | cilium.io | Cluster | **v2**, v2alpha1 |
+| `ciliumbgppeerconfigs.cilium.io` | CiliumBGPPeerConfig | cilium.io | Cluster | **v2**, v2alpha1 |
+| `ciliumcidrgroups.cilium.io` | CiliumCIDRGroup | cilium.io | Cluster | **v2**, v2alpha1 |
+| `ciliumclusterwideenvoyconfigs.cilium.io` | CiliumClusterwideEnvoyConfig | cilium.io | Cluster | **v2** |
+| `ciliumclusterwidenetworkpolicies.cilium.io` | CiliumClusterwideNetworkPolicy | cilium.io | Cluster | **v2** |
+| `ciliumdatapathplugins.cilium.io` | CiliumDatapathPlugin | cilium.io | Cluster | **v2alpha1** |
+| `ciliumegressgatewaypolicies.cilium.io` | CiliumEgressGatewayPolicy | cilium.io | Cluster | **v2** |
+| `ciliumendpoints.cilium.io` | CiliumEndpoint | cilium.io | Namespaced | **v2** |
+| `ciliumendpointslices.cilium.io` | CiliumEndpointSlice | cilium.io | Cluster | **v2alpha1** |
+| `ciliumenvoyconfigs.cilium.io` | CiliumEnvoyConfig | cilium.io | Namespaced | **v2** |
+| `ciliumgatewayclassconfigs.cilium.io` | CiliumGatewayClassConfig | cilium.io | Namespaced | **v2alpha1** |
+| `ciliumidentities.cilium.io` | CiliumIdentity | cilium.io | Cluster | **v2** |
+| `ciliuml2announcementpolicies.cilium.io` | CiliumL2AnnouncementPolicy | cilium.io | Cluster | **v2alpha1** |
+| `ciliumloadbalancerippools.cilium.io` | CiliumLoadBalancerIPPool | cilium.io | Cluster | **v2**, v2alpha1 |
+| `ciliumlocalredirectpolicies.cilium.io` | CiliumLocalRedirectPolicy | cilium.io | Namespaced | **v2** |
+| `ciliumnetworkpolicies.cilium.io` | CiliumNetworkPolicy | cilium.io | Namespaced | **v2** |
+| `ciliumnodeconfigs.cilium.io` | CiliumNodeConfig | cilium.io | Namespaced | **v2**, v2alpha1 |
+| `ciliumnodes.cilium.io` | CiliumNode | cilium.io | Cluster | **v2** |
+| `ciliumpodippools.cilium.io` | CiliumPodIPPool | cilium.io | Cluster | **v2alpha1** |
+
+Bold = storage version, ~~struck~~ = not served.
+
+## Verify
+
+```sh
+REF=ghcr.io/dsohqlab/helm-charts/cilium-crds:<version>
+cosign verify \
+  --certificate-identity-regexp '^https://github\.com/dsohqlab/helm-charts/\.github/workflows/release\.yml@' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  $REF
+cosign verify-attestation --type spdxjson \
+  --certificate-identity-regexp '^https://github\.com/dsohqlab/helm-charts/\.github/workflows/release\.yml@' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  $REF
+gh attestation verify oci://$REF --owner dsohqlab
+```
+
+## License and attribution
+
+The CRD manifests are the work of the cilium/cilium project,
+licensed under Apache-2.0 (copy in [`LICENSE`](./LICENSE), modification statement in [`NOTICE`](./NOTICE)).
+Chart scaffolding is Apache-2.0, © dsohqlab. Generated by [dsohqlab/helm-charts](https://github.com/dsohqlab/helm-charts);
+updates are automated, please report problems there rather than upstream.

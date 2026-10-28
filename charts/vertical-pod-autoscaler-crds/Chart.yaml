@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=https://json.schemastore.org/chart.json
+apiVersion: v2
+name: vertical-pod-autoscaler-crds
+description: >-
+  A Helm chart to install the CustomResourceDefinitions for the Kubernetes
+  Vertical Pod Autoscaler (VerticalPodAutoscaler, checkpoints)
+type: application
+version: 1.8.1
+appVersion: 1.8.1
+kubeVersion: ">=1.25.0-0"
+home: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+sources:
+- https://github.com/dsohqlab/helm-charts
+- https://github.com/kubernetes/autoscaler
+keywords:
+- crds
+- vertical-pod-autoscaler
+maintainers:
+- name: dsohqlab
+  url: https://github.com/dsohqlab
+annotations:
+  artifacthub.io/license: Apache-2.0
+  artifacthub.io/crds: |
+    - kind: VerticalPodAutoscalerCheckpoint
+      version: v1
+      name: verticalpodautoscalercheckpoints.autoscaling.k8s.io
+      displayName: VerticalPodAutoscalerCheckpoint
+      description: >-
+        VerticalPodAutoscalerCheckpoint is the checkpoint of the internal state of VPA
+        that is used for recovery after recommender's restart.
+    - kind: VerticalPodAutoscaler
+      version: v1
+      name: verticalpodautoscalers.autoscaling.k8s.io
+      displayName: VerticalPodAutoscaler
+      description: >-
+        VerticalPodAutoscaler is the configuration for a vertical pod autoscaler, which
+        automatically manages pod resources based on historical and real time resource
+        utilization.
+  artifacthub.io/links: |
+    - name: Upstream project
+      url: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+    - name: Upstream repository
+      url: https://github.com/kubernetes/autoscaler
+    - name: Upstream CRD source (vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml)
+      url: >-
+        https://github.com/kubernetes/autoscaler/tree/vertical-pod-autoscaler-1.8.1/vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml
+    - name: Chart source
+      url: >-
+        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/vertical-pod-autoscaler-crds
+    - name: Verify signature and attestations
+      url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+  helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes/autoscaler
+  helm.dsohqlab.com/upstream-tag: vertical-pod-autoscaler-1.8.1
+  helm.dsohqlab.com/upstream-commit: de59752fd24e25cca63e8e779561b97c9240623a
+  artifacthub.io/changes: |
+    - Initial release, CRDs from upstream vertical-pod-autoscaler-1.8.1

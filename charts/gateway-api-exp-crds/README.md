@@ -1,0 +1,97 @@
+# gateway-api-exp-crds
+
+A Helm chart to install the CustomResourceDefinitions for Kubernetes Gateway API, experimental channel.
+
+CRDs are copied verbatim from [kubernetes-sigs/gateway-api](https://github.com/kubernetes-sigs/gateway-api)
+at tag [`v1.6.3`](https://github.com/kubernetes-sigs/gateway-api/tree/v1.6.3) (commit `c0836133e24073fcdcdbb1713aba3cc73a89d0b5`),
+path(s) `config/crd/experimental`, and rendered as regular Helm templates so that
+`helm upgrade` updates them (Helm's own `crds/` directory never upgrades).
+
+> **Warning:** this chart defines the same CRD names as `gateway-api-crds`. Install only one of them on a cluster.
+
+## Install
+
+```sh
+helm install gateway-api-exp oci://ghcr.io/dsohqlab/helm-charts/gateway-api-exp-crds --version <version>
+```
+
+Chart `version` equals the upstream version it ships; `appVersion` is always the exact upstream version.
+Installing requires Kubernetes >=1.25.0.
+
+### Already have these CRDs?
+
+If the CRDs were installed by the operator chart or `kubectl apply`, Helm refuses with
+"rendered manifests contain a resource that already exists". Either let Helm adopt them:
+
+```sh
+helm install gateway-api-exp oci://ghcr.io/dsohqlab/helm-charts/gateway-api-exp-crds --version <version> --take-ownership   # Helm >= 3.17
+```
+
+or, on older Helm, hand them over first (replace `<release>` and `<namespace>`):
+
+```sh
+kubectl annotate crd backendtlspolicies.gateway.networking.k8s.io gatewayclasses.gateway.networking.k8s.io gateways.gateway.networking.k8s.io grpcroutes.gateway.networking.k8s.io httproutes.gateway.networking.k8s.io listenersets.gateway.networking.k8s.io referencegrants.gateway.networking.k8s.io tcproutes.gateway.networking.k8s.io tlsroutes.gateway.networking.k8s.io udproutes.gateway.networking.k8s.io xbackends.gateway.networking.x-k8s.io xbackendtrafficpolicies.gateway.networking.x-k8s.io xmeshes.gateway.networking.x-k8s.io \
+  meta.helm.sh/release-name=<release> meta.helm.sh/release-namespace=<namespace> --overwrite
+kubectl label crd backendtlspolicies.gateway.networking.k8s.io gatewayclasses.gateway.networking.k8s.io gateways.gateway.networking.k8s.io grpcroutes.gateway.networking.k8s.io httproutes.gateway.networking.k8s.io listenersets.gateway.networking.k8s.io referencegrants.gateway.networking.k8s.io tcproutes.gateway.networking.k8s.io tlsroutes.gateway.networking.k8s.io udproutes.gateway.networking.k8s.io xbackends.gateway.networking.x-k8s.io xbackendtrafficpolicies.gateway.networking.x-k8s.io xmeshes.gateway.networking.x-k8s.io \
+  app.kubernetes.io/managed-by=Helm --overwrite
+```
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `annotations` | object | `{}` | Extra annotations added to every CRD. |
+| `labels` | object | `{}` | Extra labels added to every CRD. |
+| `keepOnUninstall` | bool | `true` | Add `helm.sh/resource-policy: keep` so CRDs (and all their custom resources) survive `helm uninstall`. |
+
+Unknown keys are rejected (`values.schema.json`).
+
+## CRDs
+
+| CRD | Kind | Group | Scope | Versions |
+|-----|------|-------|-------|----------|
+| `backendtlspolicies.gateway.networking.k8s.io` | BackendTLSPolicy | gateway.networking.k8s.io | Namespaced | **v1**, v1alpha3 |
+| `gatewayclasses.gateway.networking.k8s.io` | GatewayClass | gateway.networking.k8s.io | Cluster | **v1**, v1beta1 |
+| `gateways.gateway.networking.k8s.io` | Gateway | gateway.networking.k8s.io | Namespaced | **v1**, v1beta1 |
+| `grpcroutes.gateway.networking.k8s.io` | GRPCRoute | gateway.networking.k8s.io | Namespaced | **v1** |
+| `httproutes.gateway.networking.k8s.io` | HTTPRoute | gateway.networking.k8s.io | Namespaced | **v1**, v1beta1 |
+| `listenersets.gateway.networking.k8s.io` | ListenerSet | gateway.networking.k8s.io | Namespaced | **v1** |
+| `referencegrants.gateway.networking.k8s.io` | ReferenceGrant | gateway.networking.k8s.io | Namespaced | v1, **v1beta1** |
+| `tcproutes.gateway.networking.k8s.io` | TCPRoute | gateway.networking.k8s.io | Namespaced | **v1**, v1alpha2 |
+| `tlsroutes.gateway.networking.k8s.io` | TLSRoute | gateway.networking.k8s.io | Namespaced | **v1**, v1alpha2, v1alpha3 |
+| `udproutes.gateway.networking.k8s.io` | UDPRoute | gateway.networking.k8s.io | Namespaced | **v1**, v1alpha2 |
+| `xbackends.gateway.networking.x-k8s.io` | XBackend | gateway.networking.x-k8s.io | Namespaced | **v1alpha1** |
+| `xbackendtrafficpolicies.gateway.networking.x-k8s.io` | XBackendTrafficPolicy | gateway.networking.x-k8s.io | Namespaced | **v1alpha1** |
+| `xmeshes.gateway.networking.x-k8s.io` | XMesh | gateway.networking.x-k8s.io | Cluster | **v1alpha1** |
+
+Bold = storage version, ~~struck~~ = not served.
+
+## Not included
+
+Upstream ships these alongside the CRDs; this chart intentionally contains
+CustomResourceDefinitions only:
+
+- `admissionregistration.k8s.io/v1/ValidatingAdmissionPolicy`
+- `admissionregistration.k8s.io/v1/ValidatingAdmissionPolicyBinding`
+
+## Verify
+
+```sh
+REF=ghcr.io/dsohqlab/helm-charts/gateway-api-exp-crds:<version>
+cosign verify \
+  --certificate-identity-regexp '^https://github\.com/dsohqlab/helm-charts/\.github/workflows/release\.yml@' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  $REF
+cosign verify-attestation --type spdxjson \
+  --certificate-identity-regexp '^https://github\.com/dsohqlab/helm-charts/\.github/workflows/release\.yml@' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  $REF
+gh attestation verify oci://$REF --owner dsohqlab
+```
+
+## License and attribution
+
+The CRD manifests are the work of the kubernetes-sigs/gateway-api project,
+licensed under Apache-2.0 (copy in [`LICENSE`](./LICENSE), modification statement in [`NOTICE`](./NOTICE)).
+Chart scaffolding is Apache-2.0, © dsohqlab. Generated by [dsohqlab/helm-charts](https://github.com/dsohqlab/helm-charts);
+updates are automated, please report problems there rather than upstream.

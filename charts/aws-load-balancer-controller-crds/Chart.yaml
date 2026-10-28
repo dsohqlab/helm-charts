@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=https://json.schemastore.org/chart.json
+apiVersion: v2
+name: aws-load-balancer-controller-crds
+description: >-
+  A Helm chart to install the CustomResourceDefinitions for AWS Load Balancer
+  Controller
+type: application
+version: 3.6.2
+appVersion: 3.6.2
+kubeVersion: ">=1.25.0-0"
+home: https://kubernetes-sigs.github.io/aws-load-balancer-controller
+icon: >-
+  https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/assets/images/aws_load_balancer_icon.svg
+sources:
+- https://github.com/dsohqlab/helm-charts
+- https://github.com/kubernetes-sigs/aws-load-balancer-controller
+keywords:
+- crds
+- aws-load-balancer-controller
+maintainers:
+- name: dsohqlab
+  url: https://github.com/dsohqlab
+annotations:
+  artifacthub.io/license: Apache-2.0
+  artifacthub.io/crds: |
+    - kind: ALBTargetControlConfig
+      version: v1beta1
+      name: albtargetcontrolconfigs.elbv2.k8s.aws
+      displayName: ALBTargetControlConfig
+      description: ALBTargetControlConfig is the Schema for the albtargetcontrolconfigs API
+    - kind: IngressClassParams
+      version: v1beta1
+      name: ingressclassparams.elbv2.k8s.aws
+      displayName: IngressClassParams
+      description: IngressClassParams is the Schema for the IngressClassParams API
+    - kind: TargetGroupBinding
+      version: v1beta1
+      name: targetgroupbindings.elbv2.k8s.aws
+      displayName: TargetGroupBinding
+      description: TargetGroupBinding is the Schema for the TargetGroupBinding API
+  artifacthub.io/links: |
+    - name: Upstream project
+      url: https://kubernetes-sigs.github.io/aws-load-balancer-controller
+    - name: Upstream repository
+      url: https://github.com/kubernetes-sigs/aws-load-balancer-controller
+    - name: Upstream CRD source (config/crd/bases)
+      url: >-
+        https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/v3.6.2/config/crd/bases
+    - name: Chart source
+      url: >-
+        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/aws-load-balancer-controller-crds
+    - name: Verify signature and attestations
+      url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+  helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/aws-load-balancer-controller
+  helm.dsohqlab.com/upstream-tag: v3.6.2
+  helm.dsohqlab.com/upstream-commit: d19307ccb61acb577ebeb9ffbf20d19047e7a275
+  artifacthub.io/changes: |
+    - Initial release, CRDs from upstream v3.6.2

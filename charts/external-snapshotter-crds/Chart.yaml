@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=https://json.schemastore.org/chart.json
+apiVersion: v2
+name: external-snapshotter-crds
+description: >-
+  A Helm chart to install the CustomResourceDefinitions for the Kubernetes CSI
+  external-snapshotter (VolumeSnapshot and VolumeGroupSnapshot APIs)
+type: application
+version: 8.7.0
+appVersion: 8.7.0
+kubeVersion: ">=1.25.0-0"
+home: https://kubernetes-csi.github.io/docs/snapshot-controller.html
+sources:
+- https://github.com/dsohqlab/helm-charts
+- https://github.com/kubernetes-csi/external-snapshotter
+keywords:
+- crds
+- external-snapshotter
+maintainers:
+- name: dsohqlab
+  url: https://github.com/dsohqlab
+annotations:
+  artifacthub.io/license: Apache-2.0
+  artifacthub.io/crds: |
+    - kind: VolumeGroupSnapshotClass
+      version: v1beta2
+      name: volumegroupsnapshotclasses.groupsnapshot.storage.k8s.io
+      displayName: VolumeGroupSnapshotClass
+      description: >-
+        VolumeGroupSnapshotClass specifies parameters that a underlying storage system
+        uses when creating a volume group snapshot
+    - kind: VolumeGroupSnapshotContent
+      version: v1beta2
+      name: volumegroupsnapshotcontents.groupsnapshot.storage.k8s.io
+      displayName: VolumeGroupSnapshotContent
+      description: >-
+        VolumeGroupSnapshotContent represents the actual "on-disk" group snapshot
+        object in the underlying storage system
+    - kind: VolumeGroupSnapshot
+      version: v1beta2
+      name: volumegroupsnapshots.groupsnapshot.storage.k8s.io
+      displayName: VolumeGroupSnapshot
+      description: >-
+        VolumeGroupSnapshot is a user's request for creating either a point-in-time
+        group snapshot or binding to a pre-existing group snapshot.
+    - kind: VolumeSnapshotClass
+      version: v1
+      name: volumesnapshotclasses.snapshot.storage.k8s.io
+      displayName: VolumeSnapshotClass
+      description: >-
+        VolumeSnapshotClass specifies parameters that a underlying storage system uses
+        when creating a volume snapshot
+    - kind: VolumeSnapshotContent
+      version: v1
+      name: volumesnapshotcontents.snapshot.storage.k8s.io
+      displayName: VolumeSnapshotContent
+      description: >-
+        VolumeSnapshotContent represents the actual "on-disk" snapshot object in the
+        underlying storage system
+    - kind: VolumeSnapshot
+      version: v1
+      name: volumesnapshots.snapshot.storage.k8s.io
+      displayName: VolumeSnapshot
+      description: >-
+        VolumeSnapshot is a user's request for either creating a point-in-time snapshot
+        of a persistent volume, or binding to a pre-existing snapshot.
+  artifacthub.io/links: |
+    - name: Upstream project
+      url: https://kubernetes-csi.github.io/docs/snapshot-controller.html
+    - name: Upstream repository
+      url: https://github.com/kubernetes-csi/external-snapshotter
+    - name: Upstream CRD source (client/config/crd)
+      url: >-
+        https://github.com/kubernetes-csi/external-snapshotter/tree/v8.7.0/client/config/crd
+    - name: Chart source
+      url: >-
+        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/external-snapshotter-crds
+    - name: Verify signature and attestations
+      url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+  helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-csi/external-snapshotter
+  helm.dsohqlab.com/upstream-tag: v8.7.0
+  helm.dsohqlab.com/upstream-commit: 9cc6050ab00a0c56d84ba0279e518a00367363e7
+  artifacthub.io/changes: |
+    - Initial release, CRDs from upstream v8.7.0

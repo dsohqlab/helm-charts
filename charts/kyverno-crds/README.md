@@ -1,0 +1,100 @@
+# kyverno-crds
+
+A Helm chart to install the CustomResourceDefinitions for Kyverno (policies, CEL policies, exceptions, policy reports).
+
+CRDs are copied from [kyverno/kyverno](https://github.com/kyverno/kyverno)
+at tag [`v1.19.2`](https://github.com/kyverno/kyverno/tree/v1.19.2) (commit `e63308f1e16c05cd009ac4864be6ec25c66b49be`),
+path(s) `config/crds`, and rendered as regular Helm templates so that
+`helm upgrade` updates them (Helm's own `crds/` directory never upgrades).
+
+Field-level schema documentation (descriptions, titles, examples) is stripped so the Helm release fits
+Helm's 1 MiB release Secret: validation is unchanged, but `kubectl explain` shows field
+types only. Refer to the upstream documentation for field descriptions.
+
+## Install
+
+```sh
+helm install kyverno oci://ghcr.io/dsohqlab/helm-charts/kyverno-crds --version <version>
+```
+
+Chart `version` equals the upstream version it ships; `appVersion` is always the exact upstream version.
+Installing requires Kubernetes >=1.25.0.
+
+### Already have these CRDs?
+
+If the CRDs were installed by the operator chart or `kubectl apply`, Helm refuses with
+"rendered manifests contain a resource that already exists". Either let Helm adopt them:
+
+```sh
+helm install kyverno oci://ghcr.io/dsohqlab/helm-charts/kyverno-crds --version <version> --take-ownership   # Helm >= 3.17
+```
+
+or, on older Helm, hand them over first (replace `<release>` and `<namespace>`):
+
+```sh
+kubectl annotate crd cleanuppolicies.kyverno.io clustercleanuppolicies.kyverno.io clusterephemeralreports.reports.kyverno.io clusterpolicies.kyverno.io clusterpolicyreports.wgpolicyk8s.io deletingpolicies.policies.kyverno.io ephemeralreports.reports.kyverno.io generatingpolicies.policies.kyverno.io globalcontextentries.kyverno.io imagevalidatingpolicies.policies.kyverno.io mutatingpolicies.policies.kyverno.io namespaceddeletingpolicies.policies.kyverno.io namespacedgeneratingpolicies.policies.kyverno.io namespacedimagevalidatingpolicies.policies.kyverno.io namespacedmutatingpolicies.policies.kyverno.io namespacedvalidatingpolicies.policies.kyverno.io policies.kyverno.io policyexceptions.kyverno.io policyexceptions.policies.kyverno.io policyreports.wgpolicyk8s.io updaterequests.kyverno.io validatingpolicies.policies.kyverno.io \
+  meta.helm.sh/release-name=<release> meta.helm.sh/release-namespace=<namespace> --overwrite
+kubectl label crd cleanuppolicies.kyverno.io clustercleanuppolicies.kyverno.io clusterephemeralreports.reports.kyverno.io clusterpolicies.kyverno.io clusterpolicyreports.wgpolicyk8s.io deletingpolicies.policies.kyverno.io ephemeralreports.reports.kyverno.io generatingpolicies.policies.kyverno.io globalcontextentries.kyverno.io imagevalidatingpolicies.policies.kyverno.io mutatingpolicies.policies.kyverno.io namespaceddeletingpolicies.policies.kyverno.io namespacedgeneratingpolicies.policies.kyverno.io namespacedimagevalidatingpolicies.policies.kyverno.io namespacedmutatingpolicies.policies.kyverno.io namespacedvalidatingpolicies.policies.kyverno.io policies.kyverno.io policyexceptions.kyverno.io policyexceptions.policies.kyverno.io policyreports.wgpolicyk8s.io updaterequests.kyverno.io validatingpolicies.policies.kyverno.io \
+  app.kubernetes.io/managed-by=Helm --overwrite
+```
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `annotations` | object | `{}` | Extra annotations added to every CRD. |
+| `labels` | object | `{}` | Extra labels added to every CRD. |
+| `keepOnUninstall` | bool | `true` | Add `helm.sh/resource-policy: keep` so CRDs (and all their custom resources) survive `helm uninstall`. |
+
+Unknown keys are rejected (`values.schema.json`).
+
+## CRDs
+
+| CRD | Kind | Group | Scope | Versions |
+|-----|------|-------|-------|----------|
+| `cleanuppolicies.kyverno.io` | CleanupPolicy | kyverno.io | Namespaced | **v2**, v2beta1 |
+| `clustercleanuppolicies.kyverno.io` | ClusterCleanupPolicy | kyverno.io | Cluster | **v2**, v2beta1 |
+| `clusterephemeralreports.reports.kyverno.io` | ClusterEphemeralReport | reports.kyverno.io | Cluster | **v1** |
+| `clusterpolicies.kyverno.io` | ClusterPolicy | kyverno.io | Cluster | **v1**, v2beta1 |
+| `clusterpolicyreports.wgpolicyk8s.io` | ClusterPolicyReport | wgpolicyk8s.io | Cluster | **v1alpha2** |
+| `deletingpolicies.policies.kyverno.io` | DeletingPolicy | policies.kyverno.io | Cluster | v1, v1alpha1, **v1beta1** |
+| `ephemeralreports.reports.kyverno.io` | EphemeralReport | reports.kyverno.io | Namespaced | **v1** |
+| `generatingpolicies.policies.kyverno.io` | GeneratingPolicy | policies.kyverno.io | Cluster | v1, v1alpha1, **v1beta1** |
+| `globalcontextentries.kyverno.io` | GlobalContextEntry | kyverno.io | Cluster | v2, v2alpha1, **v2beta1** |
+| `imagevalidatingpolicies.policies.kyverno.io` | ImageValidatingPolicy | policies.kyverno.io | Cluster | v1, v1alpha1, **v1beta1** |
+| `mutatingpolicies.policies.kyverno.io` | MutatingPolicy | policies.kyverno.io | Cluster | v1, v1alpha1, **v1beta1** |
+| `namespaceddeletingpolicies.policies.kyverno.io` | NamespacedDeletingPolicy | policies.kyverno.io | Namespaced | v1, **v1beta1** |
+| `namespacedgeneratingpolicies.policies.kyverno.io` | NamespacedGeneratingPolicy | policies.kyverno.io | Namespaced | v1, **v1beta1** |
+| `namespacedimagevalidatingpolicies.policies.kyverno.io` | NamespacedImageValidatingPolicy | policies.kyverno.io | Namespaced | v1, **v1beta1** |
+| `namespacedmutatingpolicies.policies.kyverno.io` | NamespacedMutatingPolicy | policies.kyverno.io | Namespaced | v1, **v1beta1** |
+| `namespacedvalidatingpolicies.policies.kyverno.io` | NamespacedValidatingPolicy | policies.kyverno.io | Namespaced | v1, **v1beta1** |
+| `policies.kyverno.io` | Policy | kyverno.io | Namespaced | **v1**, v2beta1 |
+| `policyexceptions.kyverno.io` | PolicyException | kyverno.io | Namespaced | **v2**, v2beta1 |
+| `policyexceptions.policies.kyverno.io` | PolicyException | policies.kyverno.io | Namespaced | v1, v1alpha1, **v1beta1** |
+| `policyreports.wgpolicyk8s.io` | PolicyReport | wgpolicyk8s.io | Namespaced | **v1alpha2** |
+| `updaterequests.kyverno.io` | UpdateRequest | kyverno.io | Namespaced | ~~v1beta1~~, **v2** |
+| `validatingpolicies.policies.kyverno.io` | ValidatingPolicy | policies.kyverno.io | Cluster | v1, v1alpha1, **v1beta1** |
+
+Bold = storage version, ~~struck~~ = not served.
+
+## Verify
+
+```sh
+REF=ghcr.io/dsohqlab/helm-charts/kyverno-crds:<version>
+cosign verify \
+  --certificate-identity-regexp '^https://github\.com/dsohqlab/helm-charts/\.github/workflows/release\.yml@' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  $REF
+cosign verify-attestation --type spdxjson \
+  --certificate-identity-regexp '^https://github\.com/dsohqlab/helm-charts/\.github/workflows/release\.yml@' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  $REF
+gh attestation verify oci://$REF --owner dsohqlab
+```
+
+## License and attribution
+
+The CRD manifests are the work of the kyverno/kyverno project,
+licensed under Apache-2.0 (copy in [`LICENSE`](./LICENSE), modification statement in [`NOTICE`](./NOTICE)).
+Chart scaffolding is Apache-2.0, © dsohqlab. Generated by [dsohqlab/helm-charts](https://github.com/dsohqlab/helm-charts);
+updates are automated, please report problems there rather than upstream.
