@@ -1,0 +1,1257 @@
+apiVersion: v1
+entries:
+  aws-load-balancer-controller-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v3.6.2
+      artifacthub.io/crds: |
+        - kind: ALBTargetControlConfig
+          version: v1beta1
+          name: albtargetcontrolconfigs.elbv2.k8s.aws
+          displayName: ALBTargetControlConfig
+          description: ALBTargetControlConfig is the Schema for the albtargetcontrolconfigs API
+        - kind: IngressClassParams
+          version: v1beta1
+          name: ingressclassparams.elbv2.k8s.aws
+          displayName: IngressClassParams
+          description: IngressClassParams is the Schema for the IngressClassParams API
+        - kind: TargetGroupBinding
+          version: v1beta1
+          name: targetgroupbindings.elbv2.k8s.aws
+          displayName: TargetGroupBinding
+          description: TargetGroupBinding is the Schema for the TargetGroupBinding API
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://kubernetes-sigs.github.io/aws-load-balancer-controller
+        - name: Upstream repository
+          url: https://github.com/kubernetes-sigs/aws-load-balancer-controller
+        - name: Upstream CRD source (config/crd/bases)
+          url: >-
+            https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/v3.6.2/config/crd/bases
+        - name: Chart source
+          url: >-
+            https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/aws-load-balancer-controller-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: d19307ccb61acb577ebeb9ffbf20d19047e7a275
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/aws-load-balancer-controller
+      helm.dsohqlab.com/upstream-tag: v3.6.2
+    apiVersion: v2
+    appVersion: 3.6.2
+    created: "2026-10-28T23:19:28.254282173Z"
+    description: A Helm chart to install the CustomResourceDefinitions for AWS Load
+      Balancer Controller
+    digest: bcfa9766eb2b6c526d73184de6689cc7cb7aece77ede37a049916d374fc5226c
+    home: https://kubernetes-sigs.github.io/aws-load-balancer-controller
+    icon: https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/assets/images/aws_load_balancer_icon.svg
+    keywords:
+    - crds
+    - aws-load-balancer-controller
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: aws-load-balancer-controller-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-sigs/aws-load-balancer-controller
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/aws-load-balancer-controller-crds-3.6.2/aws-load-balancer-controller-crds-3.6.2.tgz
+    version: 3.6.2
+  cert-manager-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.21.3
+      artifacthub.io/crds: |
+        - kind: CertificateRequest
+          version: v1
+          name: certificaterequests.cert-manager.io
+          displayName: CertificateRequest
+          description: >-
+            A CertificateRequest is used to request a signed certificate from one of the
+            configured issuers
+        - kind: Certificate
+          version: v1
+          name: certificates.cert-manager.io
+          displayName: Certificate
+          description: >-
+            A Certificate resource should be created to ensure an up to date and signed
+            X.509 certificate is stored in the Kubernetes Secret resource named in
+            `spec.secretName`
+        - kind: Challenge
+          version: v1
+          name: challenges.acme.cert-manager.io
+          displayName: Challenge
+          description: Challenge is a type to represent a Challenge request with an ACME server
+        - kind: ClusterIssuer
+          version: v1
+          name: clusterissuers.cert-manager.io
+          displayName: ClusterIssuer
+          description: >-
+            A ClusterIssuer represents a certificate issuing authority which can be
+            referenced as part of `issuerRef` fields
+        - kind: Issuer
+          version: v1
+          name: issuers.cert-manager.io
+          displayName: Issuer
+          description: >-
+            An Issuer represents a certificate issuing authority which can be referenced as
+            part of `issuerRef` fields
+        - kind: Order
+          version: v1
+          name: orders.acme.cert-manager.io
+          displayName: Order
+          description: Order is a type to represent an Order with an ACME server
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://cert-manager.io
+        - name: Upstream repository
+          url: https://github.com/cert-manager/cert-manager
+        - name: Upstream CRD source (deploy/crds)
+          url: https://github.com/cert-manager/cert-manager/tree/v1.21.3/deploy/crds
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/cert-manager-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: 925c22283de556172d48d96a165dc2fa27f7a6ff
+      helm.dsohqlab.com/upstream-repo: https://github.com/cert-manager/cert-manager
+      helm.dsohqlab.com/upstream-tag: v1.21.3
+    apiVersion: v2
+    appVersion: 1.21.3
+    created: "2026-10-28T23:19:28.553880647Z"
+    description: A Helm chart to install the CustomResourceDefinitions for cert-manager
+      (certificates, issuers, ACME orders and challenges)
+    digest: 54962ce8c92f6a9ee20a1302b98e547419d85992b37ea2c3003c6fc865db53a5
+    home: https://cert-manager.io
+    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/master/logo/logo.svg
+    keywords:
+    - crds
+    - cert-manager
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: cert-manager-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/cert-manager/cert-manager
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/cert-manager-crds-1.21.3/cert-manager-crds-1.21.3.tgz
+    version: 1.21.3
+  cilium-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.20.4
+      artifacthub.io/crds: |
+        - kind: CiliumBGPAdvertisement
+          version: v2
+          name: ciliumbgpadvertisements.cilium.io
+          displayName: CiliumBGPAdvertisement
+          description: CiliumBGPAdvertisement is the Schema for the ciliumbgpadvertisements API
+        - kind: CiliumBGPClusterConfig
+          version: v2
+          name: ciliumbgpclusterconfigs.cilium.io
+          displayName: CiliumBGPClusterConfig
+          description: CiliumBGPClusterConfig is the Schema for the CiliumBGPClusterConfig API
+        - kind: CiliumBGPNodeConfigOverride
+          version: v2
+          name: ciliumbgpnodeconfigoverrides.cilium.io
+          displayName: CiliumBGPNodeConfigOverride
+          description: >-
+            CiliumBGPNodeConfigOverride specifies configuration overrides for a
+            CiliumBGPNodeConfig
+        - kind: CiliumBGPNodeConfig
+          version: v2
+          name: ciliumbgpnodeconfigs.cilium.io
+          displayName: CiliumBGPNodeConfig
+          description: CiliumBGPNodeConfig is node local configuration for BGP agent
+        - kind: CiliumBGPPeerConfig
+          version: v2
+          name: ciliumbgppeerconfigs.cilium.io
+          displayName: CiliumBGPPeerConfig
+          description: CiliumBGPPeerConfig custom resource
+        - kind: CiliumCIDRGroup
+          version: v2
+          name: ciliumcidrgroups.cilium.io
+          displayName: CiliumCIDRGroup
+          description: "CiliumCIDRGroup is a list of external CIDRs (i.e: CIDRs selecting peers outside the clusters) that can be referenced as a single entity from CiliumNetworkPolicies."
+        - kind: CiliumClusterwideEnvoyConfig
+          version: v2
+          name: ciliumclusterwideenvoyconfigs.cilium.io
+          displayName: CiliumClusterwideEnvoyConfig
+          description: CiliumClusterwideEnvoyConfig custom resource
+        - kind: CiliumClusterwideNetworkPolicy
+          version: v2
+          name: ciliumclusterwidenetworkpolicies.cilium.io
+          displayName: CiliumClusterwideNetworkPolicy
+          description: >-
+            CiliumClusterwideNetworkPolicy is a Kubernetes third-party resource with an
+            modified version of CiliumNetworkPolicy which is cluster scoped rather than
+            namespace scoped.
+        - kind: CiliumDatapathPlugin
+          version: v2alpha1
+          name: ciliumdatapathplugins.cilium.io
+          displayName: CiliumDatapathPlugin
+          description: >-
+            A CiliumDatapathPlugin registers a datapath plugin with Cilium and contains
+            information about its status and how Cilium should interact with it.
+        - kind: CiliumEgressGatewayPolicy
+          version: v2
+          name: ciliumegressgatewaypolicies.cilium.io
+          displayName: CiliumEgressGatewayPolicy
+          description: CiliumEgressGatewayPolicy custom resource
+        - kind: CiliumEndpoint
+          version: v2
+          name: ciliumendpoints.cilium.io
+          displayName: CiliumEndpoint
+          description: CiliumEndpoint is the status of a Cilium policy rule.
+        - kind: CiliumEndpointSlice
+          version: v2alpha1
+          name: ciliumendpointslices.cilium.io
+          displayName: CiliumEndpointSlice
+          description: CiliumEndpointSlice contains a group of CoreCiliumendpoints.
+        - kind: CiliumEnvoyConfig
+          version: v2
+          name: ciliumenvoyconfigs.cilium.io
+          displayName: CiliumEnvoyConfig
+          description: CiliumEnvoyConfig custom resource
+        - kind: CiliumGatewayClassConfig
+          version: v2alpha1
+          name: ciliumgatewayclassconfigs.cilium.io
+          displayName: CiliumGatewayClassConfig
+          description: >-
+            CiliumGatewayClassConfig is a Kubernetes third-party resource which is used to
+            configure Gateways owned by GatewayClass.
+        - kind: CiliumIdentity
+          version: v2
+          name: ciliumidentities.cilium.io
+          displayName: CiliumIdentity
+          description: CiliumIdentity is a CRD that represents an identity managed by Cilium
+        - kind: CiliumL2AnnouncementPolicy
+          version: v2alpha1
+          name: ciliuml2announcementpolicies.cilium.io
+          displayName: CiliumL2AnnouncementPolicy
+          description: >-
+            CiliumL2AnnouncementPolicy is a Kubernetes third-party resource which is used
+            to defined which nodes should announce what services on the L2 network.
+        - kind: CiliumLoadBalancerIPPool
+          version: v2
+          name: ciliumloadbalancerippools.cilium.io
+          displayName: CiliumLoadBalancerIPPool
+          description: >-
+            CiliumLoadBalancerIPPool is a Kubernetes third-party resource which is used to
+            defined pools of IPs which the operator can use to allocate and advertise IPs for
+            Services of type LoadBalancer.
+        - kind: CiliumLocalRedirectPolicy
+          version: v2
+          name: ciliumlocalredirectpolicies.cilium.io
+          displayName: CiliumLocalRedirectPolicy
+          description: >-
+            CiliumLocalRedirectPolicy is a Kubernetes Custom Resource that contains a
+            specification to redirect traffic locally within a node.
+        - kind: CiliumNetworkPolicy
+          version: v2
+          name: ciliumnetworkpolicies.cilium.io
+          displayName: CiliumNetworkPolicy
+          description: >-
+            CiliumNetworkPolicy is a Kubernetes third-party resource with an extended
+            version of NetworkPolicy.
+        - kind: CiliumNodeConfig
+          version: v2
+          name: ciliumnodeconfigs.cilium.io
+          displayName: CiliumNodeConfig
+          description: CiliumNodeConfig is a list of configuration key-value pairs
+        - kind: CiliumNode
+          version: v2
+          name: ciliumnodes.cilium.io
+          displayName: CiliumNode
+          description: CiliumNode represents a node managed by Cilium
+        - kind: CiliumPodIPPool
+          version: v2alpha1
+          name: ciliumpodippools.cilium.io
+          displayName: CiliumPodIPPool
+          description: CiliumPodIPPool defines an IP pool that can be used for pooled IPAM (i.e
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://cilium.io
+        - name: Upstream repository
+          url: https://github.com/cilium/cilium
+        - name: Upstream CRD source (pkg/k8s/apis/cilium.io/client/crds)
+          url: https://github.com/cilium/cilium/tree/v1.20.4/pkg/k8s/apis/cilium.io/client/crds
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/cilium-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: beb276d2f38d4aadfda14710acf8d14a0f1ba723
+      helm.dsohqlab.com/upstream-repo: https://github.com/cilium/cilium
+      helm.dsohqlab.com/upstream-tag: v1.20.4
+    apiVersion: v2
+    appVersion: 1.20.4
+    created: "2026-10-28T23:19:28.81661773Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Cilium
+      (cilium.io v2 and v2alpha1)
+    digest: d2d68cd0c9bcb369ffbe1c29901f75948f64d9ed9065c35db9f2360a472fec7c
+    home: https://cilium.io
+    icon: https://raw.githubusercontent.com/cilium/cilium/main/Documentation/images/logo-solo.svg
+    keywords:
+    - crds
+    - cilium
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: cilium-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/cilium/cilium
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/cilium-crds-1.20.4/cilium-crds-1.20.4.tgz
+    version: 1.20.4
+  external-dns-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v0.24.0
+      artifacthub.io/crds: |
+        - kind: DNSEndpoint
+          version: v1alpha1
+          name: dnsendpoints.externaldns.k8s.io
+          displayName: DNSEndpoint
+          description: >-
+            DNSEndpoint is a contract that a user-specified CRD must implement to be used
+            as a source for external-dns
+        - kind: DNSRecord
+          version: v1alpha1
+          name: dnsrecords.externaldns.k8s.io
+          displayName: DNSRecord
+          description: DNSRecord custom resource
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://kubernetes-sigs.github.io/external-dns/
+        - name: Upstream repository
+          url: https://github.com/kubernetes-sigs/external-dns
+        - name: Upstream CRD source (config/crd/standard)
+          url: https://github.com/kubernetes-sigs/external-dns/tree/v0.24.0/config/crd/standard
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/external-dns-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: c40894ac060e0920b2b49035df18005954f83a7a
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/external-dns
+      helm.dsohqlab.com/upstream-tag: v0.24.0
+    apiVersion: v2
+    appVersion: 0.24.0
+    created: "2026-10-28T23:19:29.048478655Z"
+    description: A Helm chart to install the CustomResourceDefinitions for ExternalDNS
+      (DNSEndpoint, DNSRecord)
+    digest: a64bf76b00e620ee7476d076c0be12e1c162b1f4537da4b9db2055d0d71d5c11
+    home: https://kubernetes-sigs.github.io/external-dns/
+    icon: https://raw.githubusercontent.com/kubernetes-sigs/external-dns/master/docs/img/external-dns.png
+    keywords:
+    - crds
+    - external-dns
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: external-dns-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-sigs/external-dns
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/external-dns-crds-0.24.0/external-dns-crds-0.24.0.tgz
+    version: 0.24.0
+  external-secrets-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v2.14.0
+      artifacthub.io/crds: |
+        - kind: ACRAccessToken
+          version: v1alpha1
+          name: acraccesstokens.generators.external-secrets.io
+          displayName: ACRAccessToken
+          description: >-
+            ACRAccessToken returns an Azure Container Registry token that can be used for
+            pushing/pulling images
+        - kind: BeyondtrustWorkloadCredentialsDynamicSecret
+          version: v1alpha1
+          name: beyondtrustworkloadcredentialsdynamicsecrets.generators.external-secrets.io
+          displayName: BeyondtrustWorkloadCredentialsDynamicSecret
+          description: >-
+            BeyondtrustWorkloadCredentialsDynamicSecret represents a generator that
+            requests dynamic credentials from BeyondTrust Workload Credentials
+        - kind: CloudsmithAccessToken
+          version: v1alpha1
+          name: cloudsmithaccesstokens.generators.external-secrets.io
+          displayName: CloudsmithAccessToken
+          description: >-
+            CloudsmithAccessToken generates Cloudsmith access token using OIDC
+            authentication
+        - kind: ClusterExternalSecret
+          version: v1
+          name: clusterexternalsecrets.external-secrets.io
+          displayName: ClusterExternalSecret
+          description: ClusterExternalSecret is the Schema for the clusterexternalsecrets API.
+        - kind: ClusterGenerator
+          version: v1alpha1
+          name: clustergenerators.generators.external-secrets.io
+          displayName: ClusterGenerator
+          description: >-
+            ClusterGenerator represents a cluster-wide generator which can be referenced as
+            part of `generatorRef` fields.
+        - kind: ClusterPushSecret
+          version: v1alpha1
+          name: clusterpushsecrets.external-secrets.io
+          displayName: ClusterPushSecret
+          description: >-
+            ClusterPushSecret is the Schema for the ClusterPushSecrets API that enables
+            cluster-wide management of pushing Kubernetes secrets to external providers.
+        - kind: ClusterSecretStore
+          version: v1
+          name: clustersecretstores.external-secrets.io
+          displayName: ClusterSecretStore
+          description: >-
+            ClusterSecretStore represents a secure external location for storing secrets,
+            which can be referenced as part of `storeRef` fields.
+        - kind: ECRAuthorizationToken
+          version: v1alpha1
+          name: ecrauthorizationtokens.generators.external-secrets.io
+          displayName: ECRAuthorizationToken
+          description: >-
+            ECRAuthorizationToken uses the GetAuthorizationToken API to retrieve an
+            authorization token
+        - kind: ExternalSecret
+          version: v1
+          name: externalsecrets.external-secrets.io
+          displayName: ExternalSecret
+          description: ExternalSecret is the Schema for the external-secrets API
+        - kind: Fake
+          version: v1alpha1
+          name: fakes.generators.external-secrets.io
+          displayName: Fake
+          description: Fake generator is used for testing
+        - kind: GCRAccessToken
+          version: v1alpha1
+          name: gcraccesstokens.generators.external-secrets.io
+          displayName: GCRAccessToken
+          description: >-
+            GCRAccessToken generates an GCP access token that can be used to authenticate
+            with GCR.
+        - kind: GeneratorState
+          version: v1alpha1
+          name: generatorstates.generators.external-secrets.io
+          displayName: GeneratorState
+          description: GeneratorState represents the state created and managed by a generator resource.
+        - kind: GithubAccessToken
+          version: v1alpha1
+          name: githubaccesstokens.generators.external-secrets.io
+          displayName: GithubAccessToken
+          description: GithubAccessToken generates ghs_ accessToken
+        - kind: GitlabDeployToken
+          version: v1alpha1
+          name: gitlabdeploytokens.generators.external-secrets.io
+          displayName: GitlabDeployToken
+          description: GitlabDeployToken generates a GitLab deploy token.
+        - kind: Grafana
+          version: v1alpha1
+          name: grafanas.generators.external-secrets.io
+          displayName: Grafana
+          description: Grafana represents a generator for Grafana service account tokens.
+        - kind: MFA
+          version: v1alpha1
+          name: mfas.generators.external-secrets.io
+          displayName: MFA
+          description: MFA generates a new TOTP token that is compliant with RFC 6238.
+        - kind: Password
+          version: v1alpha1
+          name: passwords.generators.external-secrets.io
+          displayName: Password
+          description: >-
+            Password generates a random password based on the configuration parameters in
+            spec
+        - kind: PushSecret
+          version: v1alpha1
+          name: pushsecrets.external-secrets.io
+          displayName: PushSecret
+          description: >-
+            PushSecret is the Schema for the PushSecrets API that enables pushing
+            Kubernetes secrets to external secret providers.
+        - kind: QuayAccessToken
+          version: v1alpha1
+          name: quayaccesstokens.generators.external-secrets.io
+          displayName: QuayAccessToken
+          description: QuayAccessToken generates Quay oauth token for pulling/pushing images
+        - kind: SecretStore
+          version: v1
+          name: secretstores.external-secrets.io
+          displayName: SecretStore
+          description: >-
+            SecretStore represents a secure external location for storing secrets, which
+            can be referenced as part of `storeRef` fields.
+        - kind: SSHKey
+          version: v1alpha1
+          name: sshkeys.generators.external-secrets.io
+          displayName: SSHKey
+          description: SSHKey generates SSH key pairs.
+        - kind: STSSessionToken
+          version: v1alpha1
+          name: stssessiontokens.generators.external-secrets.io
+          displayName: STSSessionToken
+          description: STSSessionToken uses the GetSessionToken API to retrieve an authorization token
+        - kind: UUID
+          version: v1alpha1
+          name: uuids.generators.external-secrets.io
+          displayName: UUID
+          description: UUID generates a version 4 UUID (21061816-abbd-40ef-8985-6db0fbcbc4c4).
+        - kind: VaultDynamicSecret
+          version: v1alpha1
+          name: vaultdynamicsecrets.generators.external-secrets.io
+          displayName: VaultDynamicSecret
+          description: >-
+            VaultDynamicSecret represents a generator that can create dynamic secrets from
+            HashiCorp Vault.
+        - kind: Webhook
+          version: v1alpha1
+          name: webhooks.generators.external-secrets.io
+          displayName: Webhook
+          description: >-
+            Webhook connects to a third party API server to handle the secrets generation
+            configuration parameters in spec
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://external-secrets.io
+        - name: Upstream repository
+          url: https://github.com/external-secrets/external-secrets
+        - name: Upstream CRD source (config/crds/bases)
+          url: >-
+            https://github.com/external-secrets/external-secrets/tree/v2.14.0/config/crds/bases
+        - name: Chart source
+          url: >-
+            https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/external-secrets-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: e932f3a3f6f274e8e269c01aa1f5fb3d1322e3c9
+      helm.dsohqlab.com/upstream-repo: https://github.com/external-secrets/external-secrets
+      helm.dsohqlab.com/upstream-tag: v2.14.0
+    apiVersion: v2
+    appVersion: 2.14.0
+    created: "2026-10-28T23:19:29.338457Z"
+    description: A Helm chart to install the CustomResourceDefinitions for External
+      Secrets Operator (stores, external/push secrets, generators)
+    digest: 01c7e4ca3ce4d37ce46891fc0cbc16f608cb014011e48eee6817dab19e9995f7
+    home: https://external-secrets.io
+    icon: https://raw.githubusercontent.com/external-secrets/external-secrets/main/assets/eso-icon.svg
+    keywords:
+    - crds
+    - external-secrets
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: external-secrets-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/external-secrets/external-secrets
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/external-secrets-crds-2.14.0/external-secrets-crds-2.14.0.tgz
+    version: 2.14.0
+  external-snapshotter-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v8.7.0
+      artifacthub.io/crds: |
+        - kind: VolumeGroupSnapshotClass
+          version: v1beta2
+          name: volumegroupsnapshotclasses.groupsnapshot.storage.k8s.io
+          displayName: VolumeGroupSnapshotClass
+          description: >-
+            VolumeGroupSnapshotClass specifies parameters that a underlying storage system
+            uses when creating a volume group snapshot
+        - kind: VolumeGroupSnapshotContent
+          version: v1beta2
+          name: volumegroupsnapshotcontents.groupsnapshot.storage.k8s.io
+          displayName: VolumeGroupSnapshotContent
+          description: >-
+            VolumeGroupSnapshotContent represents the actual "on-disk" group snapshot
+            object in the underlying storage system
+        - kind: VolumeGroupSnapshot
+          version: v1beta2
+          name: volumegroupsnapshots.groupsnapshot.storage.k8s.io
+          displayName: VolumeGroupSnapshot
+          description: >-
+            VolumeGroupSnapshot is a user's request for creating either a point-in-time
+            group snapshot or binding to a pre-existing group snapshot.
+        - kind: VolumeSnapshotClass
+          version: v1
+          name: volumesnapshotclasses.snapshot.storage.k8s.io
+          displayName: VolumeSnapshotClass
+          description: >-
+            VolumeSnapshotClass specifies parameters that a underlying storage system uses
+            when creating a volume snapshot
+        - kind: VolumeSnapshotContent
+          version: v1
+          name: volumesnapshotcontents.snapshot.storage.k8s.io
+          displayName: VolumeSnapshotContent
+          description: >-
+            VolumeSnapshotContent represents the actual "on-disk" snapshot object in the
+            underlying storage system
+        - kind: VolumeSnapshot
+          version: v1
+          name: volumesnapshots.snapshot.storage.k8s.io
+          displayName: VolumeSnapshot
+          description: >-
+            VolumeSnapshot is a user's request for either creating a point-in-time snapshot
+            of a persistent volume, or binding to a pre-existing snapshot.
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://kubernetes-csi.github.io/docs/snapshot-controller.html
+        - name: Upstream repository
+          url: https://github.com/kubernetes-csi/external-snapshotter
+        - name: Upstream CRD source (client/config/crd)
+          url: >-
+            https://github.com/kubernetes-csi/external-snapshotter/tree/v8.7.0/client/config/crd
+        - name: Chart source
+          url: >-
+            https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/external-snapshotter-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: 9cc6050ab00a0c56d84ba0279e518a00367363e7
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-csi/external-snapshotter
+      helm.dsohqlab.com/upstream-tag: v8.7.0
+    apiVersion: v2
+    appVersion: 8.7.0
+    created: "2026-10-28T23:19:29.547520556Z"
+    description: A Helm chart to install the CustomResourceDefinitions for the Kubernetes
+      CSI external-snapshotter (VolumeSnapshot and VolumeGroupSnapshot APIs)
+    digest: ed8a4801e879def07c6f01f01abebb4ecee87cb266c448820f7f361e574fa7c0
+    home: https://kubernetes-csi.github.io/docs/snapshot-controller.html
+    keywords:
+    - crds
+    - external-snapshotter
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: external-snapshotter-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-csi/external-snapshotter
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/external-snapshotter-crds-8.7.0/external-snapshotter-crds-8.7.0.tgz
+    version: 8.7.0
+  gateway-api-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.6.3
+      artifacthub.io/crds: |
+        - kind: BackendTLSPolicy
+          version: v1
+          name: backendtlspolicies.gateway.networking.k8s.io
+          displayName: BackendTLSPolicy
+          description: >-
+            BackendTLSPolicy provides a way to configure how a Gateway connects to a
+            Backend via TLS.
+        - kind: GatewayClass
+          version: v1
+          name: gatewayclasses.gateway.networking.k8s.io
+          displayName: GatewayClass
+          description: >-
+            GatewayClass describes a class of Gateways available to the user for creating
+            Gateway resources
+        - kind: Gateway
+          version: v1
+          name: gateways.gateway.networking.k8s.io
+          displayName: Gateway
+          description: >-
+            Gateway represents an instance of a service-traffic handling infrastructure by
+            binding Listeners to a set of IP addresses
+        - kind: GRPCRoute
+          version: v1
+          name: grpcroutes.gateway.networking.k8s.io
+          displayName: GRPCRoute
+          description: GRPCRoute provides a way to route gRPC requests
+        - kind: HTTPRoute
+          version: v1
+          name: httproutes.gateway.networking.k8s.io
+          displayName: HTTPRoute
+          description: HTTPRoute provides a way to route HTTP requests
+        - kind: ListenerSet
+          version: v1
+          name: listenersets.gateway.networking.k8s.io
+          displayName: ListenerSet
+          description: >-
+            ListenerSet defines a set of additional listeners to attach to an existing
+            Gateway
+        - kind: ReferenceGrant
+          version: v1beta1
+          name: referencegrants.gateway.networking.k8s.io
+          displayName: ReferenceGrant
+          description: >-
+            ReferenceGrant identifies kinds of resources in other namespaces that are
+            trusted to reference the specified kinds of resources in the same namespace as the
+            policy
+        - kind: TCPRoute
+          version: v1
+          name: tcproutes.gateway.networking.k8s.io
+          displayName: TCPRoute
+          description: TCPRoute provides a way to route TCP requests
+        - kind: TLSRoute
+          version: v1
+          name: tlsroutes.gateway.networking.k8s.io
+          displayName: TLSRoute
+          description: >-
+            The TLSRoute resource is similar to TCPRoute, but can be configured to match
+            against TLS-specific metadata
+        - kind: UDPRoute
+          version: v1
+          name: udproutes.gateway.networking.k8s.io
+          displayName: UDPRoute
+          description: UDPRoute provides a way to route UDP traffic
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://gateway-api.sigs.k8s.io
+        - name: Upstream repository
+          url: https://github.com/kubernetes-sigs/gateway-api
+        - name: Upstream CRD source (config/crd)
+          url: https://github.com/kubernetes-sigs/gateway-api/tree/v1.6.3/config/crd
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/gateway-api-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: c0836133e24073fcdcdbb1713aba3cc73a89d0b5
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/gateway-api
+      helm.dsohqlab.com/upstream-tag: v1.6.3
+    apiVersion: v2
+    appVersion: 1.6.3
+    created: "2026-10-28T23:19:29.763893959Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Kubernetes
+      Gateway API, standard channel
+    digest: 33c6d07e5be59e0d0e5e6850c3fa7d26ae2a344e6e00a15c478b6254aee01cba
+    home: https://gateway-api.sigs.k8s.io
+    icon: https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/main/site/assets/icons/logo.svg
+    keywords:
+    - crds
+    - gateway-api
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: gateway-api-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-sigs/gateway-api
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/gateway-api-crds-1.6.3/gateway-api-crds-1.6.3.tgz
+    version: 1.6.3
+  gateway-api-exp-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.6.3
+      artifacthub.io/crds: |
+        - kind: BackendTLSPolicy
+          version: v1
+          name: backendtlspolicies.gateway.networking.k8s.io
+          displayName: BackendTLSPolicy
+          description: >-
+            BackendTLSPolicy provides a way to configure how a Gateway connects to a
+            Backend via TLS.
+        - kind: GatewayClass
+          version: v1
+          name: gatewayclasses.gateway.networking.k8s.io
+          displayName: GatewayClass
+          description: >-
+            GatewayClass describes a class of Gateways available to the user for creating
+            Gateway resources
+        - kind: Gateway
+          version: v1
+          name: gateways.gateway.networking.k8s.io
+          displayName: Gateway
+          description: >-
+            Gateway represents an instance of a service-traffic handling infrastructure by
+            binding Listeners to a set of IP addresses
+        - kind: GRPCRoute
+          version: v1
+          name: grpcroutes.gateway.networking.k8s.io
+          displayName: GRPCRoute
+          description: GRPCRoute provides a way to route gRPC requests
+        - kind: HTTPRoute
+          version: v1
+          name: httproutes.gateway.networking.k8s.io
+          displayName: HTTPRoute
+          description: HTTPRoute provides a way to route HTTP requests
+        - kind: ListenerSet
+          version: v1
+          name: listenersets.gateway.networking.k8s.io
+          displayName: ListenerSet
+          description: >-
+            ListenerSet defines a set of additional listeners to attach to an existing
+            Gateway
+        - kind: ReferenceGrant
+          version: v1beta1
+          name: referencegrants.gateway.networking.k8s.io
+          displayName: ReferenceGrant
+          description: >-
+            ReferenceGrant identifies kinds of resources in other namespaces that are
+            trusted to reference the specified kinds of resources in the same namespace as the
+            policy
+        - kind: TCPRoute
+          version: v1
+          name: tcproutes.gateway.networking.k8s.io
+          displayName: TCPRoute
+          description: TCPRoute provides a way to route TCP requests
+        - kind: TLSRoute
+          version: v1
+          name: tlsroutes.gateway.networking.k8s.io
+          displayName: TLSRoute
+          description: >-
+            The TLSRoute resource is similar to TCPRoute, but can be configured to match
+            against TLS-specific metadata
+        - kind: UDPRoute
+          version: v1
+          name: udproutes.gateway.networking.k8s.io
+          displayName: UDPRoute
+          description: UDPRoute provides a way to route UDP traffic
+        - kind: XBackend
+          version: v1alpha1
+          name: xbackends.gateway.networking.x-k8s.io
+          displayName: XBackend
+          description: >-
+            XBackend is a Gateway API resource that represents a backend destination for
+            routing traffic
+        - kind: XBackendTrafficPolicy
+          version: v1alpha1
+          name: xbackendtrafficpolicies.gateway.networking.x-k8s.io
+          displayName: XBackendTrafficPolicy
+          description: >-
+            XBackendTrafficPolicy defines the configuration for how traffic to a target
+            backend should be handled.
+        - kind: XMesh
+          version: v1alpha1
+          name: xmeshes.gateway.networking.x-k8s.io
+          displayName: XMesh
+          description: XMesh defines mesh-wide characteristics of a GAMMA-compliant service mesh.
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://gateway-api.sigs.k8s.io
+        - name: Upstream repository
+          url: https://github.com/kubernetes-sigs/gateway-api
+        - name: Upstream CRD source (config/crd/experimental)
+          url: >-
+            https://github.com/kubernetes-sigs/gateway-api/tree/v1.6.3/config/crd/experimental
+        - name: Chart source
+          url: >-
+            https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/gateway-api-exp-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: c0836133e24073fcdcdbb1713aba3cc73a89d0b5
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/gateway-api
+      helm.dsohqlab.com/upstream-tag: v1.6.3
+    apiVersion: v2
+    appVersion: 1.6.3
+    created: "2026-10-28T23:19:29.97273104Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Kubernetes
+      Gateway API, experimental channel
+    digest: 78b395bf68e8d484ee8ab6ed9dde7b168af6e0820eb1d59b2e133a80f4df3dc6
+    home: https://gateway-api.sigs.k8s.io
+    icon: https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/main/site/assets/icons/logo.svg
+    keywords:
+    - crds
+    - gateway-api-exp
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: gateway-api-exp-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-sigs/gateway-api
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/gateway-api-exp-crds-1.6.3/gateway-api-exp-crds-1.6.3.tgz
+    version: 1.6.3
+  kyverno-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.19.2
+      artifacthub.io/crds: |
+        - kind: CleanupPolicy
+          version: v2
+          name: cleanuppolicies.kyverno.io
+          displayName: CleanupPolicy
+          description: CleanupPolicy defines a rule for resource cleanup.
+        - kind: ClusterCleanupPolicy
+          version: v2
+          name: clustercleanuppolicies.kyverno.io
+          displayName: ClusterCleanupPolicy
+          description: ClusterCleanupPolicy defines rule for resource cleanup.
+        - kind: ClusterEphemeralReport
+          version: v1
+          name: clusterephemeralreports.reports.kyverno.io
+          displayName: ClusterEphemeralReport
+          description: ClusterEphemeralReport is the Schema for the ClusterEphemeralReports API
+        - kind: ClusterPolicy
+          version: v1
+          name: clusterpolicies.kyverno.io
+          displayName: ClusterPolicy
+          description: >-
+            ClusterPolicy declares validation, mutation, and generation behaviors for
+            matching resources.
+        - kind: ClusterPolicyReport
+          version: v1alpha2
+          name: clusterpolicyreports.wgpolicyk8s.io
+          displayName: ClusterPolicyReport
+          description: ClusterPolicyReport is the Schema for the clusterpolicyreports API
+        - kind: DeletingPolicy
+          version: v1beta1
+          name: deletingpolicies.policies.kyverno.io
+          displayName: DeletingPolicy
+          description: DeletingPolicy custom resource
+        - kind: EphemeralReport
+          version: v1
+          name: ephemeralreports.reports.kyverno.io
+          displayName: EphemeralReport
+          description: EphemeralReport is the Schema for the EphemeralReports API
+        - kind: GeneratingPolicy
+          version: v1beta1
+          name: generatingpolicies.policies.kyverno.io
+          displayName: GeneratingPolicy
+          description: GeneratingPolicy custom resource
+        - kind: GlobalContextEntry
+          version: v2beta1
+          name: globalcontextentries.kyverno.io
+          displayName: GlobalContextEntry
+          description: GlobalContextEntry declares resources to be cached.
+        - kind: ImageValidatingPolicy
+          version: v1beta1
+          name: imagevalidatingpolicies.policies.kyverno.io
+          displayName: ImageValidatingPolicy
+          description: ImageValidatingPolicy custom resource
+        - kind: MutatingPolicy
+          version: v1beta1
+          name: mutatingpolicies.policies.kyverno.io
+          displayName: MutatingPolicy
+          description: MutatingPolicy custom resource
+        - kind: NamespacedDeletingPolicy
+          version: v1beta1
+          name: namespaceddeletingpolicies.policies.kyverno.io
+          displayName: NamespacedDeletingPolicy
+          description: NamespacedDeletingPolicy custom resource
+        - kind: NamespacedGeneratingPolicy
+          version: v1beta1
+          name: namespacedgeneratingpolicies.policies.kyverno.io
+          displayName: NamespacedGeneratingPolicy
+          description: NamespacedGeneratingPolicy is the namespaced CEL-based generating policy.
+        - kind: NamespacedImageValidatingPolicy
+          version: v1beta1
+          name: namespacedimagevalidatingpolicies.policies.kyverno.io
+          displayName: NamespacedImageValidatingPolicy
+          description: NamespacedImageValidatingPolicy custom resource
+        - kind: NamespacedMutatingPolicy
+          version: v1beta1
+          name: namespacedmutatingpolicies.policies.kyverno.io
+          displayName: NamespacedMutatingPolicy
+          description: NamespacedMutatingPolicy custom resource
+        - kind: NamespacedValidatingPolicy
+          version: v1beta1
+          name: namespacedvalidatingpolicies.policies.kyverno.io
+          displayName: NamespacedValidatingPolicy
+          description: NamespacedValidatingPolicy custom resource
+        - kind: Policy
+          version: v1
+          name: policies.kyverno.io
+          displayName: Policy
+          description: >-
+            Policy declares validation, mutation, and generation behaviors for matching
+            resources
+        - kind: PolicyException
+          version: v2
+          name: policyexceptions.kyverno.io
+          displayName: PolicyException
+          description: PolicyException declares resources to be excluded from specified policies.
+        - kind: PolicyException
+          version: v1beta1
+          name: policyexceptions.policies.kyverno.io
+          displayName: PolicyException
+          description: PolicyException declares resources to be excluded from specified policies.
+        - kind: PolicyReport
+          version: v1alpha2
+          name: policyreports.wgpolicyk8s.io
+          displayName: PolicyReport
+          description: PolicyReport is the Schema for the policyreports API
+        - kind: UpdateRequest
+          version: v2
+          name: updaterequests.kyverno.io
+          displayName: UpdateRequest
+          description: UpdateRequest is a request to process mutate and generate rules in background.
+        - kind: ValidatingPolicy
+          version: v1beta1
+          name: validatingpolicies.policies.kyverno.io
+          displayName: ValidatingPolicy
+          description: ValidatingPolicy custom resource
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://kyverno.io
+        - name: Upstream repository
+          url: https://github.com/kyverno/kyverno
+        - name: Upstream CRD source (config/crds)
+          url: https://github.com/kyverno/kyverno/tree/v1.19.2/config/crds
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/kyverno-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: e63308f1e16c05cd009ac4864be6ec25c66b49be
+      helm.dsohqlab.com/upstream-repo: https://github.com/kyverno/kyverno
+      helm.dsohqlab.com/upstream-tag: v1.19.2
+    apiVersion: v2
+    appVersion: 1.19.2
+    created: "2026-10-28T23:19:30.205373594Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Kyverno
+      (policies, CEL policies, exceptions, policy reports)
+    digest: 4876a329c30c8b091159538b8cfb8bd8f6e04c24a954ed620301a96d32a2aadb
+    home: https://kyverno.io
+    icon: https://raw.githubusercontent.com/kyverno/kyverno/main/img/logo.png
+    keywords:
+    - crds
+    - kyverno
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: kyverno-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kyverno/kyverno
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/kyverno-crds-1.19.2/kyverno-crds-1.19.2.tgz
+    version: 1.19.2
+  secrets-store-csi-driver-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.6.1
+      artifacthub.io/crds: |
+        - kind: SecretProviderClass
+          version: v1
+          name: secretproviderclasses.secrets-store.csi.x-k8s.io
+          displayName: SecretProviderClass
+          description: SecretProviderClass is the Schema for the secretproviderclasses API
+        - kind: SecretProviderClassPodStatus
+          version: v1
+          name: secretproviderclasspodstatuses.secrets-store.csi.x-k8s.io
+          displayName: SecretProviderClassPodStatus
+          description: >-
+            SecretProviderClassPodStatus is the Schema for the
+            secretproviderclassespodstatus API
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://secrets-store-csi-driver.sigs.k8s.io
+        - name: Upstream repository
+          url: https://github.com/kubernetes-sigs/secrets-store-csi-driver
+        - name: Upstream CRD source (config/crd/bases)
+          url: >-
+            https://github.com/kubernetes-sigs/secrets-store-csi-driver/tree/v1.6.1/config/crd/bases
+        - name: Chart source
+          url: >-
+            https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/secrets-store-csi-driver-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: 0e4ceeb734246e1de5267d8968023a3c8dcff39a
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/secrets-store-csi-driver
+      helm.dsohqlab.com/upstream-tag: v1.6.1
+    apiVersion: v2
+    appVersion: 1.6.1
+    created: "2026-10-28T23:19:30.420482514Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Secrets
+      Store CSI driver for Kubernetes secrets
+    digest: bd1a6c70f02d0d8dc0b7c3d51900dde755de2cdef9c6c003ffadb9f452198a4b
+    home: https://secrets-store-csi-driver.sigs.k8s.io
+    icon: https://github.com/kubernetes/kubernetes/blob/master/logo/logo.png
+    keywords:
+    - crds
+    - secrets-store-csi-driver
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: secrets-store-csi-driver-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-sigs/secrets-store-csi-driver
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/secrets-store-csi-driver-crds-1.6.1/secrets-store-csi-driver-crds-1.6.1.tgz
+    version: 1.6.1
+  traefik-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v3.7.16
+      artifacthub.io/crds: |
+        - kind: IngressRoute
+          version: v1alpha1
+          name: ingressroutes.traefik.io
+          displayName: IngressRoute
+          description: IngressRoute is the CRD implementation of a Traefik HTTP Router.
+        - kind: IngressRouteTCP
+          version: v1alpha1
+          name: ingressroutetcps.traefik.io
+          displayName: IngressRouteTCP
+          description: IngressRouteTCP is the CRD implementation of a Traefik TCP Router.
+        - kind: IngressRouteUDP
+          version: v1alpha1
+          name: ingressrouteudps.traefik.io
+          displayName: IngressRouteUDP
+          description: IngressRouteUDP is a CRD implementation of a Traefik UDP Router.
+        - kind: Middleware
+          version: v1alpha1
+          name: middlewares.traefik.io
+          displayName: Middleware
+          description: Middleware is the CRD implementation of a Traefik Middleware
+        - kind: MiddlewareTCP
+          version: v1alpha1
+          name: middlewaretcps.traefik.io
+          displayName: MiddlewareTCP
+          description: MiddlewareTCP is the CRD implementation of a Traefik TCP middleware
+        - kind: ServersTransport
+          version: v1alpha1
+          name: serverstransports.traefik.io
+          displayName: ServersTransport
+          description: ServersTransport is the CRD implementation of a ServersTransport
+        - kind: ServersTransportTCP
+          version: v1alpha1
+          name: serverstransporttcps.traefik.io
+          displayName: ServersTransportTCP
+          description: ServersTransportTCP is the CRD implementation of a TCPServersTransport
+        - kind: TLSOption
+          version: v1alpha1
+          name: tlsoptions.traefik.io
+          displayName: TLSOption
+          description: >-
+            TLSOption is the CRD implementation of a Traefik TLS Option, allowing to
+            configure some parameters of the TLS connection
+        - kind: TLSStore
+          version: v1alpha1
+          name: tlsstores.traefik.io
+          displayName: TLSStore
+          description: TLSStore is the CRD implementation of a Traefik TLS Store
+        - kind: TraefikService
+          version: v1alpha1
+          name: traefikservices.traefik.io
+          displayName: TraefikService
+          description: TraefikService is the CRD implementation of a Traefik Service
+      artifacthub.io/license: MIT
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://traefik.io
+        - name: Upstream repository
+          url: https://github.com/traefik/traefik
+        - name: >-
+            Upstream CRD source
+            (docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml)
+          url: >-
+            https://github.com/traefik/traefik/tree/v3.7.16/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/traefik-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: af6d927c51191ae1df104aaf907793386b816c28
+      helm.dsohqlab.com/upstream-repo: https://github.com/traefik/traefik
+      helm.dsohqlab.com/upstream-tag: v3.7.16
+    apiVersion: v2
+    appVersion: 3.7.16
+    created: "2026-10-28T23:19:30.638807073Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Traefik
+      Proxy (IngressRoutes, Middlewares, TLS options, transports)
+    digest: c9c71b30f92c18623cb545593235e2ccdd0b4c22d1261f415592491944bfeb6a
+    home: https://traefik.io
+    icon: https://raw.githubusercontent.com/traefik/traefik/master/docs/content/assets/img/traefikproxy-icon-color.png
+    keywords:
+    - crds
+    - traefik
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: traefik-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/traefik/traefik
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/traefik-crds-3.7.16/traefik-crds-3.7.16.tgz
+    version: 3.7.16
+  vertical-pod-autoscaler-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream vertical-pod-autoscaler-1.8.1
+      artifacthub.io/crds: |
+        - kind: VerticalPodAutoscalerCheckpoint
+          version: v1
+          name: verticalpodautoscalercheckpoints.autoscaling.k8s.io
+          displayName: VerticalPodAutoscalerCheckpoint
+          description: >-
+            VerticalPodAutoscalerCheckpoint is the checkpoint of the internal state of VPA
+            that is used for recovery after recommender's restart.
+        - kind: VerticalPodAutoscaler
+          version: v1
+          name: verticalpodautoscalers.autoscaling.k8s.io
+          displayName: VerticalPodAutoscaler
+          description: >-
+            VerticalPodAutoscaler is the configuration for a vertical pod autoscaler, which
+            automatically manages pod resources based on historical and real time resource
+            utilization.
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+        - name: Upstream repository
+          url: https://github.com/kubernetes/autoscaler
+        - name: Upstream CRD source (vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml)
+          url: >-
+            https://github.com/kubernetes/autoscaler/tree/vertical-pod-autoscaler-1.8.1/vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml
+        - name: Chart source
+          url: >-
+            https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/vertical-pod-autoscaler-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: de59752fd24e25cca63e8e779561b97c9240623a
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes/autoscaler
+      helm.dsohqlab.com/upstream-tag: vertical-pod-autoscaler-1.8.1
+    apiVersion: v2
+    appVersion: 1.8.1
+    created: "2026-10-28T23:19:30.871292153Z"
+    description: A Helm chart to install the CustomResourceDefinitions for the Kubernetes
+      Vertical Pod Autoscaler (VerticalPodAutoscaler, checkpoints)
+    digest: fcf0ba8d941d5d2e73a2d4290d5c549bcdb0df67b9b052ce950eaea9255575b9
+    home: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+    keywords:
+    - crds
+    - vertical-pod-autoscaler
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: vertical-pod-autoscaler-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes/autoscaler
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/vertical-pod-autoscaler-crds-1.8.1/vertical-pod-autoscaler-crds-1.8.1.tgz
+    version: 1.8.1
+generated: "2026-10-28T23:19:30.871298685Z"
