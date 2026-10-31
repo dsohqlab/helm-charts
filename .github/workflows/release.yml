@@ -64,17 +64,45 @@ jobs:
           INDEX="gh-pages/index.yaml"
           README="gh-pages/README.md"
 
+          # Validate input files
+          [[ -f "$INDEX" ]] || {
+            echo "::error::Helm index not found: $INDEX"
+            exit 1
+          }
+
+          [[ -f "$README" ]] || {
+            echo "::error::README not found: $README"
+            exit 1
+          }
+
+          # Validate Helm index structure
+          yq -e '.entries | type == "!!map"' "$INDEX" >/dev/null
+
+          # Generate chart table
           TABLE=$(yq -r '
             .entries
             | to_entries[]
+            | select(.value | length > 0)
             | .key as $name
             | (.value | sort_by(.version) | .[-1]) as $chart
-            | "| `\($name)` | `\($chart.version)` | `\($chart.appVersion // "-")` | \($chart.description // "") |"
+            | "| `\($name)` | `\($chart.version)` | `\($chart.appVersion // "-")` | \($chart.description // "" | sub("[\r\n]+"; " ")) |"
           ' "$INDEX")
 
-          TMP=$(mktemp)
+          # Verify expected README section exists
+          if ! grep -Fxq "## Available Charts" "$README"; then
+            echo "::error::Missing '## Available Charts' section in README"
+            exit 1
+          fi
 
-          awk -v table="$TABLE" '
+          # Update only the Available Charts section
+          TMP=$(mktemp "${README}.XXXXXX")
+          trap 'rm -f "$TMP"' EXIT
+
+          TABLE="$TABLE" awk '
+            BEGIN {
+              table = ENVIRON["TABLE"]
+            }
+
             /^## Available Charts$/ {
               print
               print ""
@@ -85,15 +113,13 @@ jobs:
                 print table
               }
 
-              updating=1
+              updating = 1
               next
             }
 
-            updating && /^## Usage$/ {
-              updating=0
+            updating && /^## / {
+              updating = 0
               print ""
-              print
-              next
             }
 
             !updating {
@@ -101,10 +127,13 @@ jobs:
             }
           ' "$README" > "$TMP"
 
-          mv "$TMP" "$README"
-
-          echo "Updated Available Charts section:"
-          sed -n "/^## Available Charts$/,/^## Usage$/p" "$README"
+          # Replace README atomically
+          if ! cmp -s "$README" "$TMP"; then
+            mv "$TMP" "$README"
+            echo "Available Charts section updated."
+          else
+            echo "Available Charts section is already up to date."
+          fi
 
       - name: Commit README to gh-pages
         working-directory: gh-pages
