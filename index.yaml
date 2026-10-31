@@ -653,6 +653,111 @@ entries:
   gateway-api-crds:
   - annotations:
       artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.7.0
+      artifacthub.io/crds: |
+        - kind: BackendTLSPolicy
+          version: v1
+          name: backendtlspolicies.gateway.networking.k8s.io
+          displayName: BackendTLSPolicy
+          description: >-
+            BackendTLSPolicy provides a way to configure how a Gateway connects to a
+            Backend via TLS.
+        - kind: GatewayClass
+          version: v1
+          name: gatewayclasses.gateway.networking.k8s.io
+          displayName: GatewayClass
+          description: >-
+            GatewayClass describes a class of Gateways available to the user for creating
+            Gateway resources
+        - kind: Gateway
+          version: v1
+          name: gateways.gateway.networking.k8s.io
+          displayName: Gateway
+          description: >-
+            Gateway represents an instance of a service-traffic handling infrastructure by
+            binding Listeners to a set of IP addresses
+        - kind: GRPCRoute
+          version: v1
+          name: grpcroutes.gateway.networking.k8s.io
+          displayName: GRPCRoute
+          description: GRPCRoute provides a way to route gRPC requests
+        - kind: HTTPRoute
+          version: v1
+          name: httproutes.gateway.networking.k8s.io
+          displayName: HTTPRoute
+          description: HTTPRoute provides a way to route HTTP requests
+        - kind: ListenerSet
+          version: v1
+          name: listenersets.gateway.networking.k8s.io
+          displayName: ListenerSet
+          description: >-
+            ListenerSet defines a set of additional listeners to attach to an existing
+            Gateway
+        - kind: ReferenceGrant
+          version: v1beta1
+          name: referencegrants.gateway.networking.k8s.io
+          displayName: ReferenceGrant
+          description: >-
+            ReferenceGrant identifies kinds of resources in other namespaces that are
+            trusted to reference the specified kinds of resources in the same namespace as the
+            policy
+        - kind: TCPRoute
+          version: v1
+          name: tcproutes.gateway.networking.k8s.io
+          displayName: TCPRoute
+          description: TCPRoute provides a way to route TCP requests
+        - kind: TLSRoute
+          version: v1
+          name: tlsroutes.gateway.networking.k8s.io
+          displayName: TLSRoute
+          description: >-
+            The TLSRoute resource is similar to TCPRoute, but can be configured to match
+            against TLS-specific metadata
+        - kind: UDPRoute
+          version: v1
+          name: udproutes.gateway.networking.k8s.io
+          displayName: UDPRoute
+          description: UDPRoute provides a way to route UDP traffic
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://gateway-api.sigs.k8s.io
+        - name: Upstream repository
+          url: https://github.com/kubernetes-sigs/gateway-api
+        - name: Upstream CRD source (config/crd)
+          url: https://github.com/kubernetes-sigs/gateway-api/tree/v1.7.0/config/crd
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/charts/gateway-api-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: e26d183dbbc1bb782b78addbd26faba03955c152
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/gateway-api
+      helm.dsohqlab.com/upstream-tag: v1.7.0
+    apiVersion: v2
+    appVersion: 1.7.0
+    created: "2026-10-31T12:49:18.114403995Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Kubernetes
+      Gateway API, standard channel
+    digest: 632212017959abeab733a082433c25c6c73cf4fbc930fb66f7ec2f675314bdf4
+    home: https://gateway-api.sigs.k8s.io
+    icon: https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/main/site/assets/icons/logo.svg
+    keywords:
+    - crds
+    - gateway-api
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: gateway-api-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-sigs/gateway-api
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/gateway-api-crds-1.7.0/gateway-api-crds-1.7.0.tgz
+    version: 1.7.0
+  - annotations:
+      artifacthub.io/changes: |
         - Initial release, CRDs from upstream v1.6.3
       artifacthub.io/crds: |
         - kind: BackendTLSPolicy
@@ -757,6 +862,138 @@ entries:
     - https://github.com/dsohqlab/helm-charts/releases/download/gateway-api-crds-1.6.3/gateway-api-crds-1.6.3.tgz
     version: 1.6.3
   gateway-api-exp-crds:
+  - annotations:
+      artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v1.7.0
+      artifacthub.io/crds: |
+        - kind: BackendTLSPolicy
+          version: v1
+          name: backendtlspolicies.gateway.networking.k8s.io
+          displayName: BackendTLSPolicy
+          description: >-
+            BackendTLSPolicy provides a way to configure how a Gateway connects to a
+            Backend via TLS.
+        - kind: GatewayClass
+          version: v1
+          name: gatewayclasses.gateway.networking.k8s.io
+          displayName: GatewayClass
+          description: >-
+            GatewayClass describes a class of Gateways available to the user for creating
+            Gateway resources
+        - kind: Gateway
+          version: v1
+          name: gateways.gateway.networking.k8s.io
+          displayName: Gateway
+          description: >-
+            Gateway represents an instance of a service-traffic handling infrastructure by
+            binding Listeners to a set of IP addresses
+        - kind: GRPCRoute
+          version: v1
+          name: grpcroutes.gateway.networking.k8s.io
+          displayName: GRPCRoute
+          description: GRPCRoute provides a way to route gRPC requests
+        - kind: HTTPRoute
+          version: v1
+          name: httproutes.gateway.networking.k8s.io
+          displayName: HTTPRoute
+          description: HTTPRoute provides a way to route HTTP requests
+        - kind: ListenerSet
+          version: v1
+          name: listenersets.gateway.networking.k8s.io
+          displayName: ListenerSet
+          description: >-
+            ListenerSet defines a set of additional listeners to attach to an existing
+            Gateway
+        - kind: ReferenceGrant
+          version: v1beta1
+          name: referencegrants.gateway.networking.k8s.io
+          displayName: ReferenceGrant
+          description: >-
+            ReferenceGrant identifies kinds of resources in other namespaces that are
+            trusted to reference the specified kinds of resources in the same namespace as the
+            policy
+        - kind: TCPRoute
+          version: v1
+          name: tcproutes.gateway.networking.k8s.io
+          displayName: TCPRoute
+          description: TCPRoute provides a way to route TCP requests
+        - kind: TLSRoute
+          version: v1
+          name: tlsroutes.gateway.networking.k8s.io
+          displayName: TLSRoute
+          description: >-
+            The TLSRoute resource is similar to TCPRoute, but can be configured to match
+            against TLS-specific metadata
+        - kind: UDPRoute
+          version: v1
+          name: udproutes.gateway.networking.k8s.io
+          displayName: UDPRoute
+          description: UDPRoute provides a way to route UDP traffic
+        - kind: XBackend
+          version: v1alpha1
+          name: xbackends.gateway.networking.x-k8s.io
+          displayName: XBackend
+          description: >-
+            XBackend is a Gateway API resource that represents a backend destination for
+            routing traffic
+        - kind: XBackendTrafficPolicy
+          version: v1alpha1
+          name: xbackendtrafficpolicies.gateway.networking.x-k8s.io
+          displayName: XBackendTrafficPolicy
+          description: >-
+            XBackendTrafficPolicy defines the configuration for how traffic to a target
+            backend should be handled.
+        - kind: XMesh
+          version: v1alpha1
+          name: xmeshes.gateway.networking.x-k8s.io
+          displayName: XMesh
+          description: XMesh defines mesh-wide characteristics of a GAMMA-compliant service mesh.
+        - kind: XTelemetryPolicy
+          version: v1alpha1
+          name: xtelemetrypolicies.gateway.networking.x-k8s.io
+          displayName: XTelemetryPolicy
+          description: >-
+            TelemetryPolicy defines a Direct Attached Policy to configure
+            telemetry/observability signals for Gateways
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://gateway-api.sigs.k8s.io
+        - name: Upstream repository
+          url: https://github.com/kubernetes-sigs/gateway-api
+        - name: Upstream CRD source (config/crd/experimental)
+          url: >-
+            https://github.com/kubernetes-sigs/gateway-api/tree/v1.7.0/config/crd/experimental
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/charts/gateway-api-exp-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: e26d183dbbc1bb782b78addbd26faba03955c152
+      helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/gateway-api
+      helm.dsohqlab.com/upstream-tag: v1.7.0
+    apiVersion: v2
+    appVersion: 1.7.0
+    created: "2026-10-31T12:49:18.359382548Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Kubernetes
+      Gateway API, experimental channel
+    digest: 36f0ae51681ad648fd182dfcd0117e402651d4675eb23dd1298a5bab82e589d5
+    home: https://gateway-api.sigs.k8s.io
+    icon: https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/main/site/assets/icons/logo.svg
+    keywords:
+    - crds
+    - gateway-api-exp
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: gateway-api-exp-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/kubernetes-sigs/gateway-api
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/gateway-api-exp-crds-1.7.0/gateway-api-exp-crds-1.7.0.tgz
+    version: 1.7.0
   - annotations:
       artifacthub.io/changes: |
         - Initial release, CRDs from upstream v1.6.3
@@ -1100,6 +1337,103 @@ entries:
   traefik-crds:
   - annotations:
       artifacthub.io/changes: |
+        - Initial release, CRDs from upstream v3.7.17
+      artifacthub.io/crds: |
+        - kind: IngressRoute
+          version: v1alpha1
+          name: ingressroutes.traefik.io
+          displayName: IngressRoute
+          description: IngressRoute is the CRD implementation of a Traefik HTTP Router.
+        - kind: IngressRouteTCP
+          version: v1alpha1
+          name: ingressroutetcps.traefik.io
+          displayName: IngressRouteTCP
+          description: IngressRouteTCP is the CRD implementation of a Traefik TCP Router.
+        - kind: IngressRouteUDP
+          version: v1alpha1
+          name: ingressrouteudps.traefik.io
+          displayName: IngressRouteUDP
+          description: IngressRouteUDP is a CRD implementation of a Traefik UDP Router.
+        - kind: Middleware
+          version: v1alpha1
+          name: middlewares.traefik.io
+          displayName: Middleware
+          description: Middleware is the CRD implementation of a Traefik Middleware
+        - kind: MiddlewareTCP
+          version: v1alpha1
+          name: middlewaretcps.traefik.io
+          displayName: MiddlewareTCP
+          description: MiddlewareTCP is the CRD implementation of a Traefik TCP middleware
+        - kind: ServersTransport
+          version: v1alpha1
+          name: serverstransports.traefik.io
+          displayName: ServersTransport
+          description: ServersTransport is the CRD implementation of a ServersTransport
+        - kind: ServersTransportTCP
+          version: v1alpha1
+          name: serverstransporttcps.traefik.io
+          displayName: ServersTransportTCP
+          description: ServersTransportTCP is the CRD implementation of a TCPServersTransport
+        - kind: TLSOption
+          version: v1alpha1
+          name: tlsoptions.traefik.io
+          displayName: TLSOption
+          description: >-
+            TLSOption is the CRD implementation of a Traefik TLS Option, allowing to
+            configure some parameters of the TLS connection
+        - kind: TLSStore
+          version: v1alpha1
+          name: tlsstores.traefik.io
+          displayName: TLSStore
+          description: TLSStore is the CRD implementation of a Traefik TLS Store
+        - kind: TraefikService
+          version: v1alpha1
+          name: traefikservices.traefik.io
+          displayName: TraefikService
+          description: TraefikService is the CRD implementation of a Traefik Service
+      artifacthub.io/license: MIT
+      artifacthub.io/links: |
+        - name: Upstream project
+          url: https://traefik.io
+        - name: Upstream repository
+          url: https://github.com/traefik/traefik
+        - name: >-
+            Upstream CRD source
+            (docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml)
+          url: >-
+            https://github.com/traefik/traefik/tree/v3.7.17/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+        - name: Chart source
+          url: https://github.com/dsohqlab/helm-charts/tree/main/charts/traefik-crds
+        - name: Verify signature and attestations
+          url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
+      helm.dsohqlab.com/upstream-commit: 04e8ccf84ada1dcb450cec06554fe27812903134
+      helm.dsohqlab.com/upstream-repo: https://github.com/traefik/traefik
+      helm.dsohqlab.com/upstream-tag: v3.7.17
+    apiVersion: v2
+    appVersion: 3.7.17
+    created: "2026-10-31T12:49:19.19986532Z"
+    description: A Helm chart to install the CustomResourceDefinitions for Traefik
+      Proxy (IngressRoutes, Middlewares, TLS options, transports)
+    digest: dec3bb44df7dd5f986dbb01aad581b7341e603c7722b7f2ed9c44a95db63ba9b
+    home: https://traefik.io
+    icon: https://raw.githubusercontent.com/traefik/traefik/master/docs/content/assets/img/traefikproxy-icon-color.png
+    keywords:
+    - crds
+    - traefik
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: dsohqlab
+      url: https://github.com/dsohqlab
+    name: traefik-crds
+    sources:
+    - https://github.com/dsohqlab/helm-charts
+    - https://github.com/traefik/traefik
+    type: application
+    urls:
+    - https://github.com/dsohqlab/helm-charts/releases/download/traefik-crds-3.7.17/traefik-crds-3.7.17.tgz
+    version: 3.7.17
+  - annotations:
+      artifacthub.io/changes: |
         - Initial release, CRDs from upstream v3.7.16
       artifacthub.io/crds: |
         - kind: IngressRoute
@@ -1254,4 +1588,4 @@ entries:
     urls:
     - https://github.com/dsohqlab/helm-charts/releases/download/vertical-pod-autoscaler-crds-1.8.1/vertical-pod-autoscaler-crds-1.8.1.tgz
     version: 1.8.1
-generated: "2026-10-28T23:19:30.871298685Z"
+generated: "2026-10-31T12:49:19.482704492Z"
