@@ -41,6 +41,7 @@ jobs:
         uses: helm/chart-releaser-action@df287104677278f869ca5480bd260358397cc3f9 # v1.8.0
         with:
           config: cr.yaml
+          skip_existing: false
           oci_registry_url: oci://ghcr.io/${{ github.repository_owner }}/charts
         env:
           CR_REPLACE_EXISTING: true
