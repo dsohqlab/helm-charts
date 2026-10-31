@@ -64,7 +64,7 @@ jobs:
           INDEX="gh-pages/index.yaml"
           README="gh-pages/README.md"
 
-          # Validate input files
+          # Validate files
           [[ -f "$INDEX" ]] || {
             echo "::error::Helm index not found: $INDEX"
             exit 1
@@ -75,8 +75,8 @@ jobs:
             exit 1
           }
 
-          # Validate Helm index structure
-          yq -e '.entries | type == "!!map"' "$INDEX" >/dev/null
+          # Validate index structure
+          yq -e '.entries | tag == "!!map"' "$INDEX" >/dev/null
 
           # Generate chart table
           TABLE=$(yq -r '
@@ -85,19 +85,19 @@ jobs:
             | select(.value | length > 0)
             | .key as $name
             | (.value | sort_by(.version) | .[-1]) as $chart
-            | "| `\($name)` | `\($chart.version)` | `\($chart.appVersion // "-")` | \($chart.description // "" | sub("[\r\n]+"; " ")) |"
+            | "| `\($name)` | `\($chart.version)` | `\($chart.appVersion // "-")` | \($chart.description // "") |"
           ' "$INDEX")
 
-          # Verify expected README section exists
+          # Validate README section
           if ! grep -Fxq "## Available Charts" "$README"; then
-            echo "::error::Missing '## Available Charts' section in README"
+            echo "::error::Missing Available Charts section"
             exit 1
           fi
 
-          # Update only the Available Charts section
           TMP=$(mktemp "${README}.XXXXXX")
           trap 'rm -f "$TMP"' EXIT
 
+          # Replace only Available Charts content
           TABLE="$TABLE" awk '
             BEGIN {
               table = ENVIRON["TABLE"]
@@ -127,7 +127,7 @@ jobs:
             }
           ' "$README" > "$TMP"
 
-          # Replace README atomically
+          # Update only when content changed
           if ! cmp -s "$README" "$TMP"; then
             mv "$TMP" "$README"
             echo "Available Charts section updated."
