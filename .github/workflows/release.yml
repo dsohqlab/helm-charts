@@ -68,7 +68,7 @@ jobs:
             .entries
             | to_entries[]
             | .key as $name
-            | (.value | sort_by(.version) | last) as $chart
+            | (.value | sort_by(.version) | .[-1]) as $chart
             | "| `\($name)` | `\($chart.version)` | `\($chart.appVersion // "-")` | \($chart.description // "") |"
           ' "$INDEX")
 
@@ -79,7 +79,7 @@ jobs:
               print
               print ""
               print "| Chart | Version | App Version | Description |"
-              print "|---|---|---|---|"
+              print "| --- | --- | --- | --- |"
 
               if (table != "") {
                 print table
@@ -89,8 +89,11 @@ jobs:
               next
             }
 
-            updating && /^## / {
+            updating && /^## Usage$/ {
               updating=0
+              print ""
+              print
+              next
             }
 
             !updating {
@@ -99,6 +102,9 @@ jobs:
           ' "$README" > "$TMP"
 
           mv "$TMP" "$README"
+
+          echo "Updated Available Charts section:"
+          sed -n "/^## Available Charts$/,/^## Usage$/p" "$README"
 
       - name: Commit README to gh-pages
         working-directory: gh-pages
