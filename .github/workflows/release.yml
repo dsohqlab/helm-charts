@@ -44,8 +44,76 @@ jobs:
           skip_existing: false
           oci_registry_url: oci://ghcr.io/${{ github.repository_owner }}/charts
         env:
-          CR_REPLACE_EXISTING: true
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout GitHub Pages
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: gh-pages
+          path: gh-pages
+          persist-credentials: true
+
+      - name: Install yq
+        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
+
+      - name: Update Available Charts README section
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          INDEX="gh-pages/index.yaml"
+          README="gh-pages/README.md"
+
+          TABLE=$(yq -r '
+            .entries
+            | to_entries[]
+            | .key as $name
+            | (.value | sort_by(.version) | last) as $chart
+            | "| `\($name)` | `\($chart.version)` | `\($chart.appVersion // "-")` | \($chart.description // "") |"
+          ' "$INDEX")
+
+          TMP=$(mktemp)
+
+          awk -v table="$TABLE" '
+            /^## Available Charts$/ {
+              print
+              print ""
+              print "| Chart | Version | App Version | Description |"
+              print "|---|---|---|---|"
+
+              if (table != "") {
+                print table
+              }
+
+              updating=1
+              next
+            }
+
+            updating && /^## / {
+              updating=0
+            }
+
+            !updating {
+              print
+            }
+          ' "$README" > "$TMP"
+
+          mv "$TMP" "$README"
+
+      - name: Commit README to gh-pages
+        working-directory: gh-pages
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+          git add README.md
+
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: update available Helm charts"
+            git push origin gh-pages
+          else
+            echo "README is already up to date."
+          fi
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
@@ -54,11 +122,13 @@ jobs:
 
       - name: Publish and Sign OCI Charts
         run: |
-          for chart in `find .cr-release-packages -name '*.tgz' -print`; do
-            helm push ${chart} oci://ghcr.io/${GITHUB_REPOSITORY} |& tee helm-push-output.log
+          for chart in .cr-release-packages/*.tgz; do
+            [ -f "$chart" ] || continue
             file_name=${chart##*/}
             chart_name=${file_name%-*}
-            digest=$(awk -F "[, ]+" '/Digest/{print $NF}' < helm-push-output.log)
+            helm push "$chart" oci://ghcr.io/${GITHUB_REPOSITORY} \
+              |& tee helm-push-output.log
+            digest=$(awk -F "[, ]+" '/Digest/{print $NF}' helm-push-output.log)
             cosign sign "ghcr.io/${GITHUB_REPOSITORY}/${chart_name}@${digest}"
           done
         env:
