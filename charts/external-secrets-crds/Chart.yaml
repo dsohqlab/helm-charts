@@ -183,8 +183,7 @@ annotations:
       url: >-
         https://github.com/external-secrets/external-secrets/tree/v2.14.0/config/crds/bases
     - name: Chart source
-      url: >-
-        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/external-secrets-crds
+      url: https://github.com/dsohqlab/helm-charts/tree/main/charts/external-secrets-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/external-secrets/external-secrets

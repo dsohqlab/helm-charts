@@ -5,8 +5,8 @@ description: >-
   A Helm chart to install the CustomResourceDefinitions for Traefik Proxy
   (IngressRoutes, Middlewares, TLS options, transports)
 type: application
-version: 3.7.16
-appVersion: 3.7.16
+version: 3.7.17
+appVersion: 3.7.17
 kubeVersion: ">=1.25.0-0"
 home: https://traefik.io
 icon: >-
@@ -84,13 +84,13 @@ annotations:
         Upstream CRD source
         (docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml)
       url: >-
-        https://github.com/traefik/traefik/tree/v3.7.16/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+        https://github.com/traefik/traefik/tree/v3.7.17/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
     - name: Chart source
-      url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/traefik-crds
+      url: https://github.com/dsohqlab/helm-charts/tree/main/charts/traefik-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/traefik/traefik
-  helm.dsohqlab.com/upstream-tag: v3.7.16
-  helm.dsohqlab.com/upstream-commit: af6d927c51191ae1df104aaf907793386b816c28
+  helm.dsohqlab.com/upstream-tag: v3.7.17
+  helm.dsohqlab.com/upstream-commit: 04e8ccf84ada1dcb450cec06554fe27812903134
   artifacthub.io/changes: |
-    - Initial release, CRDs from upstream v3.7.16
+    - Initial release, CRDs from upstream v3.7.17

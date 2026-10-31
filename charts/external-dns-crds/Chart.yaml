@@ -43,7 +43,7 @@ annotations:
     - name: Upstream CRD source (config/crd/standard)
       url: https://github.com/kubernetes-sigs/external-dns/tree/v0.24.0/config/crd/standard
     - name: Chart source
-      url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/external-dns-crds
+      url: https://github.com/dsohqlab/helm-charts/tree/main/charts/external-dns-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/external-dns

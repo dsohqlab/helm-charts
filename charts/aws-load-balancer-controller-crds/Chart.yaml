@@ -48,7 +48,7 @@ annotations:
         https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/v3.6.2/config/crd/bases
     - name: Chart source
       url: >-
-        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/aws-load-balancer-controller-crds
+        https://github.com/dsohqlab/helm-charts/tree/main/charts/aws-load-balancer-controller-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/aws-load-balancer-controller

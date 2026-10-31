@@ -46,7 +46,7 @@ annotations:
         https://github.com/kubernetes/autoscaler/tree/vertical-pod-autoscaler-1.8.1/vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml
     - name: Chart source
       url: >-
-        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/vertical-pod-autoscaler-crds
+        https://github.com/dsohqlab/helm-charts/tree/main/charts/vertical-pod-autoscaler-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes/autoscaler

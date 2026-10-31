@@ -73,7 +73,7 @@ annotations:
         https://github.com/kubernetes-csi/external-snapshotter/tree/v8.7.0/client/config/crd
     - name: Chart source
       url: >-
-        https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/external-snapshotter-crds
+        https://github.com/dsohqlab/helm-charts/tree/main/charts/external-snapshotter-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-csi/external-snapshotter

@@ -159,7 +159,7 @@ annotations:
     - name: Upstream CRD source (pkg/k8s/apis/cilium.io/client/crds)
       url: https://github.com/cilium/cilium/tree/v1.20.4/pkg/k8s/apis/cilium.io/client/crds
     - name: Chart source
-      url: https://github.com/dsohqlab/helm-charts/tree/main/helm-charts/cilium-crds
+      url: https://github.com/dsohqlab/helm-charts/tree/main/charts/cilium-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/cilium/cilium
