@@ -5,8 +5,8 @@ description: >-
   A Helm chart to install the CustomResourceDefinitions for Kyverno (policies,
   CEL policies, exceptions, policy reports)
 type: application
-version: 1.19.2
-appVersion: 1.19.2
+version: 1.20.0
+appVersion: 1.20.0
 kubeVersion: ">=1.25.0-0"
 home: https://kyverno.io
 icon: https://raw.githubusercontent.com/kyverno/kyverno/main/img/logo.png
@@ -142,13 +142,13 @@ annotations:
     - name: Upstream repository
       url: https://github.com/kyverno/kyverno
     - name: Upstream CRD source (config/crds)
-      url: https://github.com/kyverno/kyverno/tree/v1.19.2/config/crds
+      url: https://github.com/kyverno/kyverno/tree/v1.20.0/config/crds
     - name: Chart source
       url: https://github.com/dsohqlab/helm-charts/tree/main/charts/kyverno-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/kyverno/kyverno
-  helm.dsohqlab.com/upstream-tag: v1.19.2
-  helm.dsohqlab.com/upstream-commit: e63308f1e16c05cd009ac4864be6ec25c66b49be
+  helm.dsohqlab.com/upstream-tag: v1.20.0
+  helm.dsohqlab.com/upstream-commit: f666af06e9bd310c7e730f1523c0430e90371a89
   artifacthub.io/changes: |
-    - Initial release, CRDs from upstream v1.19.2
+    - Initial release, CRDs from upstream v1.20.0

@@ -5,8 +5,8 @@ description: >-
   A Helm chart to install the CustomResourceDefinitions for Cilium (cilium.io v2
   and v2alpha1)
 type: application
-version: 1.20.4
-appVersion: 1.20.4
+version: 1.20.5
+appVersion: 1.20.5
 kubeVersion: ">=1.25.0-0"
 home: https://cilium.io
 icon: >-
@@ -157,13 +157,13 @@ annotations:
     - name: Upstream repository
       url: https://github.com/cilium/cilium
     - name: Upstream CRD source (pkg/k8s/apis/cilium.io/client/crds)
-      url: https://github.com/cilium/cilium/tree/v1.20.4/pkg/k8s/apis/cilium.io/client/crds
+      url: https://github.com/cilium/cilium/tree/v1.20.5/pkg/k8s/apis/cilium.io/client/crds
     - name: Chart source
       url: https://github.com/dsohqlab/helm-charts/tree/main/charts/cilium-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/cilium/cilium
-  helm.dsohqlab.com/upstream-tag: v1.20.4
-  helm.dsohqlab.com/upstream-commit: beb276d2f38d4aadfda14710acf8d14a0f1ba723
+  helm.dsohqlab.com/upstream-tag: v1.20.5
+  helm.dsohqlab.com/upstream-commit: 150121410c147fad575ac5dcbce6de923be69042
   artifacthub.io/changes: |
-    - Initial release, CRDs from upstream v1.20.4
+    - Initial release, CRDs from upstream v1.20.5

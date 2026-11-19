@@ -3,7 +3,7 @@
 A Helm chart to install the CustomResourceDefinitions for AWS Load Balancer Controller.
 
 CRDs are copied verbatim from [kubernetes-sigs/aws-load-balancer-controller](https://github.com/kubernetes-sigs/aws-load-balancer-controller)
-at tag [`v3.6.2`](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/v3.6.2) (commit `d19307ccb61acb577ebeb9ffbf20d19047e7a275`),
+at tag [`v3.6.3`](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/v3.6.3) (commit `e8491dea5e67f678c13347d1a2b46a5afc6dc538`),
 path(s) `config/crd/bases`, and rendered as regular Helm templates so that
 `helm upgrade` updates them (Helm's own `crds/` directory never upgrades).
 

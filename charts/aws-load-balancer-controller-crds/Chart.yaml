@@ -5,8 +5,8 @@ description: >-
   A Helm chart to install the CustomResourceDefinitions for AWS Load Balancer
   Controller
 type: application
-version: 3.6.2
-appVersion: 3.6.2
+version: 3.6.3
+appVersion: 3.6.3
 kubeVersion: ">=1.25.0-0"
 home: https://kubernetes-sigs.github.io/aws-load-balancer-controller
 icon: >-
@@ -45,14 +45,14 @@ annotations:
       url: https://github.com/kubernetes-sigs/aws-load-balancer-controller
     - name: Upstream CRD source (config/crd/bases)
       url: >-
-        https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/v3.6.2/config/crd/bases
+        https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/v3.6.3/config/crd/bases
     - name: Chart source
       url: >-
         https://github.com/dsohqlab/helm-charts/tree/main/charts/aws-load-balancer-controller-crds
     - name: Verify signature and attestations
       url: https://github.com/dsohqlab/helm-charts#verifying-what-you-install
   helm.dsohqlab.com/upstream-repo: https://github.com/kubernetes-sigs/aws-load-balancer-controller
-  helm.dsohqlab.com/upstream-tag: v3.6.2
-  helm.dsohqlab.com/upstream-commit: d19307ccb61acb577ebeb9ffbf20d19047e7a275
+  helm.dsohqlab.com/upstream-tag: v3.6.3
+  helm.dsohqlab.com/upstream-commit: e8491dea5e67f678c13347d1a2b46a5afc6dc538
   artifacthub.io/changes: |
-    - Initial release, CRDs from upstream v3.6.2
+    - Initial release, CRDs from upstream v3.6.3
